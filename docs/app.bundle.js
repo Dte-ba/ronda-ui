@@ -1,14 +1,4 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("angular"));
-	else if(typeof define === 'function' && define.amd)
-		define("rondaUI", ["angular"], factory);
-	else if(typeof exports === 'object')
-		exports["rondaUI"] = factory(require("angular"));
-	else
-		root["rondaUI"] = factory(root["angular"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
-return /******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -80,23 +70,45 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
-var _angular = __webpack_require__(1);
+var _app = __webpack_require__(1);
 
-var _angular2 = _interopRequireDefault(_angular);
+var _main = __webpack_require__(2);
 
-var _config = __webpack_require__(2);
+var _main2 = _interopRequireDefault(_main);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_angular2.default.module('ronda-ui', ['ngMaterial']).config(_config.rondaConfig);
+// the ronda docs app
+//import rondaUI from '../../';
 
-// configs
+angular.module('rondaDocs', ['ngAnimate', 'ngSanitize', 'ngMaterial', 'ngAria', 'ngMessages', 'ui.router',
+//rondaUI,
+_main2.default]).config(_app.routeConfig);
+
+angular.element(document).ready(function () {
+  angular.bootstrap(document, ['rondaDocs'], {
+    strictDi: true
+  });
+});
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.routeConfig = routeConfig;
+function routeConfig($urlRouterProvider, $locationProvider) {
+  'ngInject';
+
+  $urlRouterProvider.otherwise('/');
+
+  $locationProvider.html5Mode(true);
+}
 
 /***/ }),
 /* 2 */
@@ -105,17 +117,68 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
 "use strict";
 
 
-// configs
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MainController = undefined;
+
+var _angular = __webpack_require__(3);
+
+var _angular2 = _interopRequireDefault(_angular);
+
+var _main = __webpack_require__(4);
+
+var _main2 = _interopRequireDefault(_main);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var MainController =
+
+/*@ngInject*/
+exports.MainController = function MainController($http) {
+  _classCallCheck(this, MainController);
+
+  this.$http = $http;
+};
+
+exports.default = _angular2.default.module('rondaDocs.main', []).config(_main2.default).component('main', {
+  template: __webpack_require__(5),
+  controller: MainController
+}).name;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = angular;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.rondaConfig = rondaConfig;
-function rondaConfig($mdThemingProvider) {
+exports.default = routes;
+function routes($stateProvider) {
   'ngInject';
+
+  $stateProvider.state('main', {
+    url: '/',
+    template: '<main></main>'
+  });
 }
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = "<div>Hello World</div>"
 
 /***/ })
 /******/ ]);
-});
-//# sourceMappingURL=ronda.js.map

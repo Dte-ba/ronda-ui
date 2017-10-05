@@ -39,13 +39,7 @@ module.exports = function makeWebpackConfig(ops) {
       umdNamedDefine: true
     },
     externals: { 
-      'angular': 'angular',
-      'angular-animate': 'ngAnimate',
-      'angular-aria': 'ngAria',
-      'angular-cookies': 'ngCookies',
-      'angular-resource': 'ngResource',
-      'angular-sanitize': 'ngSanitize',
-      'angular-material': 'ngMaterial',
+      'angular': 'angular'
     },
     module: {
       rules: [

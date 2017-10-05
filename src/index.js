@@ -1,8 +1,8 @@
 import angular from 'angular';
-import ngMaterial from 'angular-material';
 
+// configs
 import { rondaConfig } from './config';
 
 angular
-	.module('ronda-ui', [ ngMaterial ])
+	.module('ronda-ui', [ 'ngMaterial' ])
 	.config(rondaConfig);
