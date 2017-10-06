@@ -10,6 +10,7 @@ import watch from 'gulp-watch';
 import batch from 'gulp-batch';
 import fontkit from 'fontkit';
 import fs from 'fs';
+import ejs from 'gulp-ejs';
 
 var plugins = gulpLoadPlugins();
 var config;
@@ -89,6 +90,20 @@ gulp.task('scss:app', function () {
   return gulp.src('./docs/app/app.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./docs'));
+});
+
+gulp.task('html:dev', () => {
+  return gulp.src('./_index.html')
+    .pipe(ejs({ basehref: '/' }))
+    .pipe(rename({ basename: 'index' }))
+    .pipe(gulp.dest('./'));
+});
+
+gulp.task('html:build', () => {
+  return gulp.src('./_index.html')
+    .pipe(ejs({ basehref: '/ronda-ui/' }))
+    .pipe(rename({ basename: 'index' }))
+    .pipe(gulp.dest('./'));
 });
 
 // generate icons scss & html
@@ -172,11 +187,11 @@ gulp.task('inject', ['inject:scss']);
 gulp.task('scss', ['inject', 'scss:dev', 'scss:build', 'scss:app'])
 
 // build!
-gulp.task('build', ['webpack', 'scss', 'bump'],  () => {
+gulp.task('build', ['webpack', 'scss', 'bump', 'html:build'],  () => {
   gulp.start('copyright');  
 });
 
-gulp.task('dev', ['webpack', 'scss']);
+gulp.task('dev', ['html:dev', 'webpack', 'scss']);
 
 gulp.task('serve', ['dev', 'webserver', 'watch']);
 
