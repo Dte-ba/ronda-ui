@@ -191,7 +191,7 @@ function routes($stateProvider) {
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = "<div ng-include=\"'/docs/app/main/sections/icons.html'\"></div>"
+module.exports = "<div ng-include=\"'docs/app/main/sections/icons.html'\"></div>"
 
 /***/ })
 /******/ ]);
