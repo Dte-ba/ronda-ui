@@ -6,16 +6,16 @@ import {
 
 import main from './main/main.component';
 
+angular.module('rondaDocs', []);
+
 // the ronda docs app
 angular.module('rondaDocs', [
 	'ngAnimate',
-	'ngSanitize', 
-  'ngMaterial',
+  'ngSanitize', 
   'ngAria',
-	'ngMessages',
-  'ui.router',
-	//rondaUI,
-  main
+  'ngMessages',
+  'ngMaterial',
+  'ui.router'
 ])
 .config(routeConfig);
 

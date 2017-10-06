@@ -78,12 +78,12 @@ var _main2 = _interopRequireDefault(_main);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// the ronda docs app
 //import rondaUI from '../../';
 
-angular.module('rondaDocs', ['ngAnimate', 'ngSanitize', 'ngMaterial', 'ngAria', 'ngMessages', 'ui.router',
-//rondaUI,
-_main2.default]).config(_app.routeConfig);
+angular.module('rondaDocs', []);
+
+// the ronda docs app
+angular.module('rondaDocs', ['ngAnimate', 'ngSanitize', 'ngAria', 'ngMessages', 'ngMaterial', 'ui.router']).config(_app.routeConfig);
 
 angular.element(document).ready(function () {
   angular.bootstrap(document, ['rondaDocs'], {
@@ -101,13 +101,12 @@ angular.element(document).ready(function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+routeConfig.$inject = ['$httpProvider'];
 exports.routeConfig = routeConfig;
-function routeConfig($urlRouterProvider, $locationProvider) {
+function routeConfig($httpProvider) {
   'ngInject';
 
-  $urlRouterProvider.otherwise('/');
-
-  $locationProvider.html5Mode(true);
+  console.log($httpProvider);
 }
 
 /***/ }),
@@ -164,6 +163,7 @@ module.exports = angular;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+routes.$inject = ['$stateProvider'];
 exports.default = routes;
 function routes($stateProvider) {
   'ngInject';

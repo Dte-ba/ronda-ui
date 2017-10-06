@@ -73,14 +73,12 @@ gulp.task('inject:scss', () => {
 gulp.task('scss:dev', function () {
   return gulp.src('./scss/ronda.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(headerComment(getHeader()))
     .pipe(gulp.dest('./build'));
 });
 
 gulp.task('scss:build', function () {
   return gulp.src('./scss/ronda.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(headerComment(getHeader()))
     .pipe(rename({ basename: 'ronda.min.css' }))
     .pipe(gulp.dest('./build'));
 });
@@ -88,7 +86,6 @@ gulp.task('scss:build', function () {
 gulp.task('scss:app', function () {
   return gulp.src('./docs/app/app.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(headerComment(getHeader()))
     .pipe(gulp.dest('./docs'));
 });
 
@@ -99,6 +96,7 @@ gulp.task('bump', function(){
   .pipe(gulp.dest('./'));
 });
 
+// create the web server
 gulp.task('webserver', function() {
   return gulp.src('./')
     .pipe(webserver({
@@ -106,6 +104,13 @@ gulp.task('webserver', function() {
       directoryListing: false,
       open: false
     }));
+});
+
+// inject the comments
+gulp.task('copyright', function() {
+  return gulp.src(['./build/*.js', './build/*.css'])
+    .pipe(headerComment(getHeader()))
+    .pipe(gulp.dest('./build/'));
 });
 
 // webpack
@@ -117,7 +122,9 @@ gulp.task('inject', ['inject:scss']);
 gulp.task('scss', ['inject', 'scss:dev', 'scss:build', 'scss:app'])
 
 // build!
-gulp.task('build', ['webpack', 'bump', 'scss']);
+gulp.task('build', ['webpack', 'scss', 'bump'],  () => {
+  gulp.start('copyright');  
+});
 
 gulp.task('dev', ['webpack', 'scss']);
 
