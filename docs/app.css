@@ -1,0 +1,17 @@
+ul.ronda-icons-list {
+  padding-left: 0;
+  list-style: none; }
+  ul.ronda-icons-list li {
+    float: left;
+    width: 12.5%;
+    padding: 10px;
+    font-size: 10px;
+    line-height: 1.4;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #fff; }
+
+.glyphicon-class {
+  display: block;
+  text-align: center;
+  word-wrap: break-word; }

@@ -8,6 +8,10 @@ export class MainController {
     this.$http = $http;
   }
 
+  $onInit(){
+    
+  }
+
 }
 
 export default angular.module('rondaDocs.main', [])

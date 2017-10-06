@@ -4,6 +4,34 @@ Componentes para el proyecto [Ronda](https://github.com/Dte-ba/ronda)
 
 [Explorar los componentes](https://dte-ba.github.io/ronda-ui)
 
+# Para Desarrolladores
+
+## Requisitos
+
+Es necesario tener instalado [gulp](https://gulpjs.com/)
+
+```
+~:npm install -g gulp-cli 
+```
+
+Generación de iconos cuando las fonts son actualizadas
+
+```
+~:gulp generate:icons
+```
+
+Iniciar el servidor de visualización de docs
+
+```
+~:gulp serve
+```
+
+Crea un nuevo build con los nuevos cambios
+
+```
+~:gulp build
+```
+
 ## Licencia
 
 MIT License

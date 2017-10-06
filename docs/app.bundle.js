@@ -83,7 +83,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 angular.module('rondaDocs', []);
 
 // the ronda docs app
-angular.module('rondaDocs', ['ngAnimate', 'ngSanitize', 'ngAria', 'ngMessages', 'ngMaterial', 'ui.router']).config(_app.routeConfig);
+angular.module('rondaDocs', ['ngAnimate', 'ngSanitize', 'ngAria', 'ngMessages', 'ngMaterial', 'ui.router', _main2.default]).config(_app.routeConfig);
 
 angular.element(document).ready(function () {
   angular.bootstrap(document, ['rondaDocs'], {
@@ -101,12 +101,14 @@ angular.element(document).ready(function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-routeConfig.$inject = ['$httpProvider'];
+routeConfig.$inject = ['$urlRouterProvider', '$locationProvider'];
 exports.routeConfig = routeConfig;
-function routeConfig($httpProvider) {
+function routeConfig($urlRouterProvider, $locationProvider) {
   'ngInject';
 
-  console.log($httpProvider);
+  $urlRouterProvider.otherwise('/');
+
+  $locationProvider.html5Mode(true);
 }
 
 /***/ }),
@@ -121,6 +123,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MainController = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _angular = __webpack_require__(3);
 
 var _angular2 = _interopRequireDefault(_angular);
@@ -133,14 +137,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var MainController =
+var MainController = exports.MainController = function () {
+  MainController.$inject = ['$http'];
 
-/*@ngInject*/
-exports.MainController = function MainController($http) {
-  _classCallCheck(this, MainController);
+  /*@ngInject*/
+  function MainController($http) {
+    _classCallCheck(this, MainController);
 
-  this.$http = $http;
-};
+    this.$http = $http;
+  }
+
+  _createClass(MainController, [{
+    key: '$onInit',
+    value: function $onInit() {}
+  }]);
+
+  return MainController;
+}();
 
 exports.default = _angular2.default.module('rondaDocs.main', []).config(_main2.default).component('main', {
   template: __webpack_require__(5),
@@ -178,7 +191,7 @@ function routes($stateProvider) {
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = "<div>Hello World</div>"
+module.exports = "<div ng-include=\"'/docs/app/main/sections/icons.html'\"></div>"
 
 /***/ })
 /******/ ]);

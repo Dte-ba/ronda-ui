@@ -15,7 +15,8 @@ angular.module('rondaDocs', [
   'ngAria',
   'ngMessages',
   'ngMaterial',
-  'ui.router'
+  'ui.router',
+  main
 ])
 .config(routeConfig);
 
