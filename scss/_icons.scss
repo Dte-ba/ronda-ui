@@ -1,0 +1,21 @@
+.ri {
+  display: inline-block;
+  font: normal normal normal 24px/1 ronda;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ri-2x {
+	font-size: 2em;
+}
+
+.ri-3x {
+	font-size: 3em;
+}
+
+.ri-4x {
+	font-size: 4em;
+}
+
+@import "_icons-gen.scss";
