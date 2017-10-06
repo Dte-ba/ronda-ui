@@ -1,7 +1,8 @@
 //import rondaUI from '../../';
 
 import {
-  routeConfig
+  routeConfig,
+  runApp
 } from './app.config';
 
 import main from './main/main.component';
@@ -18,6 +19,7 @@ angular.module('rondaDocs', [
   'ui.router',
   main
 ])
+.run(runApp)
 .config(routeConfig);
 
 angular.element(document)

@@ -2,8 +2,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ronda UI</title>
-  
-
+  <base href="/" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
@@ -23,6 +22,15 @@
     </md-content> 
   </section>
   
+  <!-- fix base for github -->
+  <script>
+    var reg = /github/ig;
+    if (reg.test(window.location.hostname)){
+      var base = document.head.getElementsByTagName('base')[0];
+      base.setAttribure('href', '/ronda-ui/');
+    }
+  </script>
+
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>

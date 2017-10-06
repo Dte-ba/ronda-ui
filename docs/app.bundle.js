@@ -83,7 +83,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 angular.module('rondaDocs', []);
 
 // the ronda docs app
-angular.module('rondaDocs', ['ngAnimate', 'ngSanitize', 'ngAria', 'ngMessages', 'ngMaterial', 'ui.router', _main2.default]).config(_app.routeConfig);
+angular.module('rondaDocs', ['ngAnimate', 'ngSanitize', 'ngAria', 'ngMessages', 'ngMaterial', 'ui.router', _main2.default]).run(_app.runApp).config(_app.routeConfig);
 
 angular.element(document).ready(function () {
   angular.bootstrap(document, ['rondaDocs'], {
@@ -103,15 +103,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 routeConfig.$inject = ['$urlRouterProvider', '$locationProvider'];
 exports.routeConfig = routeConfig;
+exports.runApp = runApp;
 function routeConfig($urlRouterProvider, $locationProvider) {
   'ngInject';
 
   $urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode({
-    enabled: true,
-    requireBase: false
+    enabled: true
   });
+}
+
+function runApp() {
+  'ngInject';
 }
 
 /***/ }),

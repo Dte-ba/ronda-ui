@@ -6,7 +6,10 @@ export function routeConfig($urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $locationProvider.html5Mode({
-	  enabled: true,
-	  requireBase: false
-	});
+  	enabled: true
+  });
+}
+
+export function runApp() {
+	'ngInject';
 }
