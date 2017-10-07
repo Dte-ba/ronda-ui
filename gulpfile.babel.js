@@ -82,7 +82,7 @@ gulp.task('scss:dev', function () {
 gulp.task('scss:build', function () {
   return gulp.src('./scss/ronda.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(rename({ basename: 'ronda.min.css' }))
+    .pipe(rename({ basename: 'ronda.min' }))
     .pipe(gulp.dest('./build'));
 });
 
