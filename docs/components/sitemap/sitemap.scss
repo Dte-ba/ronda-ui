@@ -1,0 +1,19 @@
+$sitemap-height: 80px; 
+$sitemap-bg-color: #303030;
+
+.sitemap {
+	background-color: $sitemap-bg-color;
+	.sitemap-content {
+		height: $sitemap-height;	
+	}
+
+	.ronda-logo-sitemap {
+		width: 140px;
+	}
+
+	.sitemap-link {
+		color: white;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}

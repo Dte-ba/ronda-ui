@@ -193,11 +193,13 @@ gulp.task('build', ['webpack', 'scss', 'bump', 'html:build'],  () => {
 
 gulp.task('dev', ['html:dev', 'webpack', 'scss']);
 
-gulp.task('serve', ['dev', 'webserver', 'watch']);
+gulp.task('serve', ['dev', 'webserver'], () => {
+  gulp.start('watch');  
+});
 
 gulp.task('watch', () => {
   gulp.watch(
-      ['./src/**/*', './scss/**/*', './docs/app/**/*'],
+      ['./src/**/*', './scss/**/*', './docs/app/**/*', '!./scss/_components.scss'],
       ['dev']
     );  
 });

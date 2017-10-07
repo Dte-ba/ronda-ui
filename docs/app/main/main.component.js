@@ -6,6 +6,8 @@ export class MainController {
   /*@ngInject*/
   constructor($http) {
     this.$http = $http;
+
+    this.iconsSample1 = '<i class="ri ri-icon-name" aria-hidden="true"></i>';
   }
 
   $onInit(){

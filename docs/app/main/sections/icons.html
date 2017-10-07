@@ -1,2 +1,24 @@
-<h1>Ronda Icons</h1>
-<div ng-include="'docs/app/main/sections/icons-gen.html'"></div>
+<h1 class="docs">Icons</h1>
+
+<div class="clearfix" >
+	<div ng-include="'docs/app/main/sections/icons-gen.html'"></div>
+</div>
+
+<p>Los iconos pueden ser utilizados en cualquier tipo de elementos usando las clases <code class="hljs-inline">.ri.ri-icon-name</code>, no obstante aconsejamos utilizar el tag <strong><a href="https://www.w3schools.com/tags/tag_i.asp">i</a></strong> </p>
+
+<highlight language="html" trim-empty-lines="true">
+	{{$ctrl.iconsSample1}}
+</highlight>
+
+<h3 class="docs">Tamaños de iconos</h3>
+
+<p>Los tamaños de los icons puede ser modificados agregando clases <code class="hljs-inline">.ri-6x, .ri-5x, .ri-4x, .ri-3x, .ri-2x</code> respectivamente. Ejemplo utilizando <code class="hljs-inline">.ri.ri-herramienta</code></p>
+
+<div class="docs-icon-sample">
+	<span class="docs-icon-item"><i class="ri ri-herramienta ri-6x"></i></span>
+	<span class="docs-icon-item"><i class="ri ri-herramienta ri-5x"></i></span>
+	<span class="docs-icon-item"><i class="ri ri-herramienta ri-4x"></i></span>
+	<span class="docs-icon-item"><i class="ri ri-herramienta ri-3x"></i></span>
+	<span class="docs-icon-item"><i class="ri ri-herramienta ri-2x"></i></span>
+	<span class="docs-icon-item"><i class="ri ri-herramienta"></i></span>
+</div>

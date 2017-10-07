@@ -5,7 +5,16 @@ import {
   runApp
 } from './app.config';
 
+// directives
+import hljs from './app.directive.hljs';
+
+// endpoints
 import main from './main/main.component';
+
+// components
+import navbar from '../components/navbar/navbar.component';
+import footer from '../components/footer/footer.component';
+import sitemap from '../components/sitemap/sitemap.component';
 
 angular.module('rondaDocs', []);
 
@@ -17,7 +26,11 @@ angular.module('rondaDocs', [
   'ngMessages',
   'ngMaterial',
   'ui.router',
-  main
+  hljs,
+  navbar,
+  footer,
+  sitemap,
+  main,
 ])
 .run(runApp)
 .config(routeConfig);

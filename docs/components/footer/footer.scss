@@ -1,0 +1,11 @@
+$footer-height: 60px;
+$black-color-darken: #232425;
+
+footer {
+  background: $black-color-darken;
+  width:100%;
+
+  .footer-content {
+    height: $footer-height;
+  }
+}

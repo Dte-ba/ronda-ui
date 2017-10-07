@@ -1,2 +1,66 @@
+/**
+ * PATHS
+ */
+
 // the ronda fonts path for icons
 $ronda-font-path: '../fonts';
+
+/**
+ * CORE
+ */
+$footer-height: 60px;
+$sitemap-height: 80px;
+
+/**
+ * COLORS
+ */
+$ba-color: #80a424;
+$black-color: #242526;
+$black-color-darken: #232425;
+
+$light-color-primary:   rgba(0,0,0, 0.87);
+$light-color-secondary: rgba(0,0,0, 0.54);
+$light-color-disabled:  rgba(0,0,0, 0.38); 
+$light-color: 					#eeeeee;
+
+$dark-color-primary:   rgba(255,255,255, 1);
+$dark-color-secondary: rgba(255,255,255, 0.7);
+$dark-color-disabled:  rgba(255,255,255, 0.5); 
+$dark-color: 					 #212121;
+
+/**
+ * FONTS
+ */
+
+// Roboto weights
+$roboto-light:      300;
+$roboto-regular:    400;
+$roboto-medium:     500;
+$roboto-bold:       700;
+$roboto-black-bold: 900;
+
+// Dosis weights
+$dosis-extra-light: 200;
+$dosis-light:       300;
+$dosis-regular:     400;
+$dosis-medium:      500;
+$dosis-semi-bold:   600;
+$dosis-bold:        700;
+$dosis-extra-bold:  800;
+
+/**
+ * FONTS SIZES
+ */
+
+$font-size-body: 16px;
+
+$font-size-h1: 42px;
+$font-size-h2: 32px;
+$font-size-h3: 28px;
+$font-size-h4: 24px;
+$font-size-h5: 20px;
+$font-size-h6: 16px;
+
+$font-size-headpost-title:    54px;
+$font-size-headpost-subtitle: 38px;
+$font-size-headpost-p:				22px;

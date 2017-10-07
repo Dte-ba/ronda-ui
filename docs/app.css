@@ -1,3 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Inconsolata);
+body {
+  padding-top: 80px; }
+
+.main-container {
+  padding-bottom: 50px; }
+
+.hljs {
+  font-family: Inconsolata,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
+  .hljs pre, .hljs code, .hljs span {
+    font-family: inherit; }
+
+.docs {
+  font-family: 'Open Sans Condensed', sans-serif !important; }
+
+h1.docs {
+  font-weight: 700;
+  text-transform: uppercase; }
+
+h3.docs {
+  font-weight: 700;
+  text-transform: uppercase; }
+
+code.hljs-inline {
+  padding: .2rem .4rem;
+  font-size: 90%;
+  color: #bd4147;
+  background-color: #f8f9fa;
+  border-radius: .25rem; }
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; }
+
+.clearfix {
+  display: inline-block; }
+
+html[xmlns] .clearfix {
+  display: block; }
+
+* html .clearfix {
+  height: 1%; }
+
 ul.ronda-icons-list {
   padding-left: 0;
   list-style: none; }
@@ -15,3 +62,66 @@ ul.ronda-icons-list {
   display: block;
   text-align: center;
   word-wrap: break-word; }
+
+.ronda-banner {
+  background-color: #673bb7;
+  color: white; }
+
+/* inject:scss */
+#main-nav {
+  z-index: 1000;
+  width: 100%;
+  position: fixed;
+  top: 0px; }
+  #main-nav .navbar-content {
+    height: 80px;
+    line-height: 60px !important;
+    background-color: white;
+    -webkit-transition: height .3s, line-height .3s;
+    /* Safari */
+    transition: height .3s, line-height .3s; }
+  #main-nav.scrolled-nav .navbar-content {
+    height: 60px !important;
+    line-height: 60px !important; }
+  #main-nav.scrolled-nav .brand-logo {
+    display: none; }
+  #main-nav.scrolled-nav .brand-logo-scrolled {
+    display: block; }
+  #main-nav .brand-logo {
+    width: 154px;
+    margin-top: 17px; }
+  #main-nav .brand-logo-scrolled {
+    display: none;
+    width: 126px;
+    margin-top: 5px; }
+  #main-nav .button-bars-container {
+    width: 80px; }
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0; }
+
+.sticky:before,
+.sticky:after {
+  content: '';
+  display: table; }
+
+footer {
+  background: #232425;
+  width: 100%; }
+  footer .footer-content {
+    height: 60px; }
+
+.sitemap {
+  background-color: #303030; }
+  .sitemap .sitemap-content {
+    height: 80px; }
+  .sitemap .ronda-logo-sitemap {
+    width: 140px; }
+  .sitemap .sitemap-link {
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px; }
+
+/* endinject */

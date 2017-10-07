@@ -19,7 +19,9 @@ module.exports = function makeWebpackConfig(ops) {
     },
     externals: {
       'angular': 'angular',
-      'ronda-ui': 'ronda-ui'
+      'jquery': 'jQuery',
+      'ronda-ui': 'ronda-ui',
+      'hljs': 'hljs'
     },
     module: {
       rules: [

@@ -1,3 +1,63 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Inconsolata);
+
+body {
+  padding-top: 80px;
+}
+
+.main-container {
+  padding-bottom: 50px;
+}
+
+.hljs {
+  font-family: Inconsolata,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+
+  pre, code, span {
+    font-family: inherit;
+  }
+}
+
+.docs {
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+h1.docs {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h3.docs {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+code.hljs-inline {
+  padding: .2rem .4rem;
+  font-size: 90%;
+  color: #bd4147;
+  background-color: #f8f9fa;
+  border-radius: .25rem;
+}
+
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+html[xmlns] .clearfix {
+   display: block;
+}
+
+* html .clearfix {
+   height: 1%;
+}
 ul.ronda-icons-list {
   padding-left: 0;
   list-style: none;
@@ -19,3 +79,14 @@ ul.ronda-icons-list {
   text-align: center;
   word-wrap: break-word;
 }
+
+.ronda-banner {
+  background-color: #673bb7;
+  color: white;
+}
+
+/* inject:scss */
+@import '../components/navbar/navbar';
+@import '../components/footer/footer';
+@import '../components/sitemap/sitemap';
+/* endinject */

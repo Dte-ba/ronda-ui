@@ -1,0 +1,53 @@
+* {
+	font-family: Roboto;
+	font-weight: $roboto-regular;
+}
+
+body {
+	font-size: $font-size-body;
+}
+
+h1 { font-size: $font-size-h1; }
+
+h2 { font-size: $font-size-h2; }
+
+h3 { font-size: $font-size-h3; }
+
+h4 { font-size: $font-size-h4; }
+
+h5 { font-size: $font-size-h5; }
+
+h6 { font-size: $font-size-h6; }
+
+h1, h2, h3, h4, h5, h6 {
+	small {
+		font-size: 0.7em;
+		color: $light-color-primary;
+	}
+}
+
+// the headpost thing
+.headpost {
+	font-family: Dosis;
+
+	&.title {
+		font-weight: $dosis-bold;
+		font-size: $font-size-headpost-title;
+	}
+
+	&.subtitle {
+		font-weight: $dosis-bold;
+		font-size: $font-size-headpost-subtitle;
+	}
+
+	a, strong {
+		font-family: inherit;
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+p.headpost {
+	font-weight: $dosis-regular;
+	font-size: $font-size-headpost-p;
+}
