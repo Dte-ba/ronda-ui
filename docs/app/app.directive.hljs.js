@@ -26,10 +26,7 @@ export default angular.module('rondaDocs.directives.hljs', [])
             code = code.replace(/^\s*\n/gm, '\n');
           }
 
-          console.log(language);
-
           const highlight = hljs.highlight(language, code);
-          console.log(highlight);
           const html = highlight.value;
           element.html(`<pre><code class="${language}" data-lang="${language}">${html}</code></pre>`);
           $compile(element.contents())(scope);

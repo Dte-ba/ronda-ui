@@ -210,10 +210,7 @@ exports.default = angular.module('rondaDocs.directives.hljs', []).directive('hig
           code = code.replace(/^\s*\n/gm, '\n');
         }
 
-        console.log(language);
-
         var highlight = _hljs2.default.highlight(language, code);
-        console.log(highlight);
         var html = highlight.value;
         element.html('<pre><code class="' + language + '" data-lang="' + language + '">' + html + '</code></pre>');
         $compile(element.contents())(scope);
@@ -351,7 +348,7 @@ exports.default = angular.module('rondaDocs.navbar', []).component('navbar', {
 /* 10 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar-content\" md-whiteframe=\"4\">\n\t<div layout=\"row\">\n\t\t<span class=\"button-bars-container\"></span>\n\t\t<div class=\"brand-logo\">\n\t\t\t<object data=\"/assets/ronda-logo.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t\t<div class=\"brand-logo-scrolled\">\n\t\t\t<object data=\"/assets/ronda-logo-header.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"navbar-content\" md-whiteframe=\"4\">\n\t<div layout=\"row\">\n\t\t<span class=\"button-bars-container\"></span>\n\t\t<div class=\"brand-logo\">\n\t\t\t<object data=\"assets/ronda-logo.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t\t<div class=\"brand-logo-scrolled\">\n\t\t\t<object data=\"assets/ronda-logo-header.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 /* 11 */
@@ -392,7 +389,7 @@ exports.default = angular.module('rondaDocs.footer', []).component('footer', {
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ronda-container\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"footer-content\" layout=\"row\" layout-align=\"center center\" layout-xs=\"column\">\n\t\t  <div flex></div>\n\t\t  <div>\n\t\t    <img src=\"/assets/logo-dte.png\" alt=\"logo-dte\">\n\t\t  </div>\n\t\t  <div>\n\t\t    <img src=\"/assets/logo-ba.png\" alt=\"logo-ba\"> \n\t\t  </div>\n\t\t</div>\n\t</div>\n</div>\n"
+module.exports = "<div class=\"ronda-container\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"footer-content\" layout=\"row\" layout-align=\"center center\" layout-xs=\"column\">\n\t\t  <div flex></div>\n\t\t  <div>\n\t\t    <img src=\"assets/logo-dte.png\" alt=\"logo-dte\">\n\t\t  </div>\n\t\t  <div>\n\t\t    <img src=\"assets/logo-ba.png\" alt=\"logo-ba\"> \n\t\t  </div>\n\t\t</div>\n\t</div>\n</div>\n"
 
 /***/ }),
 /* 13 */
@@ -433,7 +430,7 @@ exports.default = angular.module('rondaDocs.sitemap', []).component('sitemap', {
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ronda-container sitemap\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"sitemap-content\" layout=\"row\" layout-align=\"start center\" layout-xs=\"column\">\n\t\t  <div class=\"ronda-logo-sitemap\">\n\t\t    <object data=\"/assets/ronda-logo-footer.svg\" type=\"image/svg+xml\"></object>\n\t\t  </div>\n\t\t  <span class=\"sitemap-link\">Qué es Ronda</span>\n\t\t  <span class=\"sitemap-link\">Guía de uso</span>\n\t\t  <span class=\"sitemap-link\">Contacto</span>\n\t\t  <span class=\"sitemap-link\">Créditos</span>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"ronda-container sitemap\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"sitemap-content\" layout=\"row\" layout-align=\"start center\" layout-xs=\"column\">\n\t\t  <div class=\"ronda-logo-sitemap\">\n\t\t    <object data=\"assets/ronda-logo-footer.svg\" type=\"image/svg+xml\"></object>\n\t\t  </div>\n\t\t  <span class=\"sitemap-link\">Qué es Ronda</span>\n\t\t  <span class=\"sitemap-link\">Guía de uso</span>\n\t\t  <span class=\"sitemap-link\">Contacto</span>\n\t\t  <span class=\"sitemap-link\">Créditos</span>\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ })
 /******/ ]);
