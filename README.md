@@ -1,8 +1,8 @@
 # Ronda UI
 
-Componentes para el proyecto [Ronda](https://github.com/Dte-ba/ronda)
+Ronda UI es un conjunto de componentes diseñados y desarrollados por el equipo de la [Dirección de Tecnología Educativa de la Provincia de Buenos Aires](http://dte.abc.gov.ar/) para el proyecto de contenidos digitales con fines educativos [Ronda](https://www.github.com/Dte-ba/ronda)
 
-[Explorar los componentes](https://dte-ba.github.io/ronda-ui)
+[Explorá los componentes](https://dte-ba.github.io/ronda-ui)
 
 # Para Desarrolladores
 

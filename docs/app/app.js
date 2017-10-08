@@ -1,4 +1,4 @@
-//import rondaUI from '../../';
+import rondaUI from '../../';
 
 import {
   routeConfig,
@@ -27,6 +27,7 @@ angular.module('rondaDocs', [
   'ngMaterial',
   'ui.router',
   hljs,
+  rondaUI,
   navbar,
   footer,
   sitemap,

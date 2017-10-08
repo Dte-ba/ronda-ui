@@ -1,5 +1,5 @@
 /**
- * @license Ronda UI v0.0.10
+ * @license Ronda UI v0.0.11
  * Copyright (c) 2017 Dte-ba
  * MIT License
  */
@@ -170,6 +170,39 @@ p.headpost {
 
 .ri-divisor:before {
   content: "\f017"; }
+
+button.bordered {
+  border: solid 1px; }
+
+.color-propuestas {
+  color: #f44336; }
+
+.color-actividades {
+  color: #7e57c2; }
+
+.color-herramientas {
+  color: #26c6da; }
+
+.color-orientaciones {
+  color: #9ccc65; }
+
+.color-mediateca {
+  color: #f9a825; }
+
+.bg-propuestas {
+  background-color: #f44336; }
+
+.bg-actividades {
+  background-color: #7e57c2; }
+
+.bg-herramientas {
+  background-color: #26c6da; }
+
+.bg-orientaciones {
+  background-color: #9ccc65; }
+
+.bg-mediateca {
+  background-color: #f9a825; }
 
 /* inject:scss */
 /* endinject */

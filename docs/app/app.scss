@@ -30,6 +30,11 @@ h3.docs {
   text-transform: uppercase;
 }
 
+h4.docs {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 code.hljs-inline {
   padding: .2rem .4rem;
   font-size: 90%;
@@ -49,6 +54,14 @@ code.hljs-inline {
 
 .clearfix {
   display: inline-block;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.buttondemos .label {
+  opacity: 0.54;
 }
 
 html[xmlns] .clearfix {
@@ -83,6 +96,43 @@ ul.ronda-icons-list {
 .ronda-banner {
   background-color: #673bb7;
   color: white;
+}
+
+@import '../../scss/_variables';
+
+.bg-color-red-600 {
+  background-color: $color-red-600;
+}
+.bg-color-deep-purple-400 {
+  background-color: $color-deep-purple-400;
+}
+.bg-color-cyan-400 {
+  background-color: $color-cyan-400;
+}
+.bg-color-light-green-400 {
+  background-color: $color-light-green-400;
+}
+.bg-color-yellow-400 {
+  background-color: $color-yellow-400;
+}
+.bg-color-red-500 {
+  background-color: $color-red-500;
+}
+.bg-color-red-900 {
+  background-color: $color-red-900;
+}
+
+.border-radius-6 {
+  border-radius: 6px;
+}
+
+.item-color {
+  height: 50px;
+}
+
+.color-legend {
+  text-align: center;
+  font-size: 0.7em;
 }
 
 /* inject:scss */

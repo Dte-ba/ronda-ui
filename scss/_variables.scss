@@ -14,8 +14,8 @@ $sitemap-height: 80px;
 /**
  * COLORS
  */
-$ba-color: #80a424;
-$black-color: #242526;
+$ba-color:           #80a424;
+$black-color:        #242526;
 $black-color-darken: #232425;
 
 $light-color-primary:   rgba(0,0,0, 0.87);
@@ -27,6 +27,21 @@ $dark-color-primary:   rgba(255,255,255, 1);
 $dark-color-secondary: rgba(255,255,255, 0.7);
 $dark-color-disabled:  rgba(255,255,255, 0.5); 
 $dark-color: 					 #212121;
+
+$color-red-500: 			  #f44336;
+$color-red-600:         #e53935;
+$color-red-900: 				#b71c1c;
+$color-deep-purple-400: #7e57c2;
+$color-cyan-400: 				#26c6da;
+$color-light-green-400: #9ccc65;
+$color-yellow-400: 			#f9a825;
+
+// section colors
+$color-propuestas:    $color-red-500;
+$color-actividades:   $color-deep-purple-400;
+$color-herramientas:  $color-cyan-400;
+$color-orientaciones: $color-light-green-400;
+$color-mediateca:     $color-yellow-400;
 
 /**
  * FONTS

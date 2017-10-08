@@ -1,0 +1,137 @@
+<h1 class="docs">Buttons</h1>
+
+<h4 class="docs">Material Buttons</h4>
+
+<md-content class="buttondemos">
+  
+  <div layout="row" layout-align="start center" layout-padding>
+    <div flex="20" class="label">Flat</div>
+    <section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button>{{$ctrl.title1}}</md-button>
+      <md-button md-no-ink class="md-primary">Primary (md-noink)</md-button>
+      <md-button ng-disabled="true" class="md-primary">Disabled</md-button>
+      <md-button class="md-warn">{{$ctrl.title4}}</md-button>
+    </section>
+  </div>
+
+  <div layout="row" layout-align="start center" layout-padding>
+    <div flex="20" class="label">Flat bordered</div>
+    <section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="bordered">{{$ctrl.title1}}</md-button>
+      <md-button md-no-ink class="md-primary bordered">Primary (md-noink)</md-button>
+      <md-button ng-disabled="true" class="md-primary bordered">Disabled</md-button>
+      <md-button class="md-warn bordered">{{$ctrl.title4}}</md-button>
+    </section>
+  </div>
+  
+  <div layout="row" layout-align="start center" layout-padding>
+    <div flex="20" class="label">Raised</div>
+    <section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="md-raised">Button</md-button>
+      <md-button class="md-raised md-primary">Primary</md-button>
+      <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+      <md-button class="md-raised md-warn">Warn</md-button>
+    </section>
+  </div>
+
+  <div layout="row" layout-align="start center" layout-padding>
+    <div flex="20" class="label">FAB</div>
+    <section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button class="md-fab" aria-label="Eat cake">
+            <md-icon md-font-icon="ri-ronda" class="ri ri-3x"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-primary" aria-label="Use Android">
+          <md-icon md-font-icon="ri-lupa" class="ri ri-3x"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab" ng-disabled="true" aria-label="Comment">
+            <md-icon md-font-icon="ri-mochila" class="ri ri-3x"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-primary md-hue-2" aria-label="Profile">
+            <md-icon md-font-icon="ri-software" class="ri ri-3x"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-mini" aria-label="Eat cake">
+            <md-icon md-font-icon="ri-audio" class="ri ri-2x"></md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-mini md-primary" aria-label="Use Android">
+          <md-icon md-font-icon="ri-enlace" class="ri ri-2x"></md-icon>
+        </md-button>
+    </section>
+  </div>
+  
+  <div layout="row" layout-align="start center" layout-padding>
+    <div flex="20" class="label">Link vs. Button</div>
+    <section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button ng-href="{{$ctrl.googleUrl}}" target="_blank">Default Link</md-button>
+        <md-button class="md-primary" ng-href="{{$ctrl.googleUrl}}" target="_blank">Primary Link</md-button>
+        <md-button>Default Button</md-button>
+    </section>
+  </div>
+  
+  <div layout="row" layout-align="start center" layout-padding>
+    <div flex="20" class="label">Themed</div>
+    <section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="md-primary md-hue-1">Primary Hue 1</md-button>
+      <md-button class="md-warn md-raised md-hue-2">Warn Hue 2</md-button>
+      <md-button class="md-accent">Accent</md-button>
+      <md-button class="md-accent md-raised md-hue-1">Accent Hue 1</md-button>
+    </section>
+  </div>
+  
+  <div layout="row" layout-align="start center" layout-padding>
+    <div flex="20" class="label">Icon Button</div>
+    <section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="md-icon-button md-primary" aria-label="Settings">
+        <md-icon md-font-icon="ri-imagen" class="ri ri-2x"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button md-accent" aria-label="Favorite">
+        <md-icon md-font-icon="ri-presentacion" class="ri ri-2x"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="More">
+        <md-icon md-font-icon="ri-texto" class="ri ri-2x"></md-icon>
+      </md-button>
+      <md-button href="http://google.com"
+                 title="Launch Google.com in new window"
+                 target="_blank"
+                 ng-disabled="true"
+                 aria-label="Google.com"
+                 class="md-icon-button launch" >
+        <md-icon md-font-icon="ri-enlace" class="ri ri-2x"></md-icon>
+      </md-button>
+    </section>
+  </div>
+</md-content>
+
+
+<h4>Custom Theme</h4>
+
+<md-input-container>
+  <label>Theme</label>
+  <md-select ng-model="$ctrl.currentTheme">
+    <md-option ng-repeat="theme in $ctrl.themes" ng-value="theme.theme">
+      {{theme.caption}}
+    </md-option>
+  </md-select>
+</md-input-container>
+
+<div></div>
+
+<section flex layout="row" layout-sm="column" layout-align="center center" layout-wrap md-theme="{{$ctrl.currentTheme}}">
+  <md-button md-theme-watch="true" md-no-ink class="md-primary" aria-label="Flat">Flat (md-noink)</md-button>
+  <md-button md-theme-watch="true" md-no-ink class="md-primary bordered" aria-label="Flat Bordered">Flat Bordered</md-button>
+  <md-button md-theme-watch="true" class="md-raised md-primary" aria-label="Raised">Raised</md-button>
+  <md-button md-theme-watch="true" class="md-fab md-primary" aria-label="Icon">
+    <md-icon md-font-icon="ri-lupa" class="ri ri-3x"></md-icon>
+  </md-button>
+  <md-button md-theme-watch="true" class="md-fab md-mini md-primary" aria-label="Icon">
+      <md-icon md-font-icon="ri-audio" class="ri ri-2x"></md-icon>
+    </md-button>
+  <md-button md-theme-watch="true" class="md-primary" ng-href="{{$ctrl.googleUrl}}" target="_blank" aria-label="Link">Link</md-button>
+  <md-button md-theme-watch="true" class="md-icon-button md-primary" aria-label="Icon">
+    <md-icon md-font-icon="ri-ronda" class="ri ri-2x"></md-icon>
+  </md-button>
+</section>

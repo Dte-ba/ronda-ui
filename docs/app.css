@@ -21,6 +21,10 @@ h3.docs {
   font-weight: 700;
   text-transform: uppercase; }
 
+h4.docs {
+  font-weight: 700;
+  text-transform: uppercase; }
+
 code.hljs-inline {
   padding: .2rem .4rem;
   font-size: 90%;
@@ -38,6 +42,12 @@ code.hljs-inline {
 
 .clearfix {
   display: inline-block; }
+
+.text-center {
+  text-align: center; }
+
+.buttondemos .label {
+  opacity: 0.54; }
 
 html[xmlns] .clearfix {
   display: block; }
@@ -66,6 +76,52 @@ ul.ronda-icons-list {
 .ronda-banner {
   background-color: #673bb7;
   color: white; }
+
+/**
+ * PATHS
+ */
+/**
+ * CORE
+ */
+/**
+ * COLORS
+ */
+/**
+ * FONTS
+ */
+/**
+ * FONTS SIZES
+ */
+.bg-color-red-600 {
+  background-color: #e53935; }
+
+.bg-color-deep-purple-400 {
+  background-color: #7e57c2; }
+
+.bg-color-cyan-400 {
+  background-color: #26c6da; }
+
+.bg-color-light-green-400 {
+  background-color: #9ccc65; }
+
+.bg-color-yellow-400 {
+  background-color: #f9a825; }
+
+.bg-color-red-500 {
+  background-color: #f44336; }
+
+.bg-color-red-900 {
+  background-color: #b71c1c; }
+
+.border-radius-6 {
+  border-radius: 6px; }
+
+.item-color {
+  height: 50px; }
+
+.color-legend {
+  text-align: center;
+  font-size: 0.7em; }
 
 /* inject:scss */
 #main-nav {
