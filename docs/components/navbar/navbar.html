@@ -1,11 +1,40 @@
 <div class="navbar-content" md-whiteframe="4">
 	<div layout="row">
-		<span class="button-bars-container"></span>
+		<div class="button-bars-container" layout="row">
+			<md-button class="nav-menu-button md-icon-button grey-color" aria-label="Menu">
+        <md-icon md-font-icon="fa-bars" class="fa fa-2x"></md-icon>
+      </md-button>
+		</div>
 		<div class="brand-logo">
 			<object data="assets/ronda-logo.svg" type="image/svg+xml"></object>
 		</div>
 		<div class="brand-logo-scrolled">
 			<object data="assets/ronda-logo-header.svg" type="image/svg+xml"></object>
+		</div>
+		<div flex class="navbar-buttons" layout="row" layout-align="center center">
+			<div ng-click="$ctrl.toggleSection('propuestas')" class="navbar-button" data-section="propuestas">
+				<span class="navbar-button-icon ri ri-propuestas ri-3x"></span>
+				<span class="navbar-button-text rd-caption">Propuesta didáctica</span>
+			</div>
+			<div ng-click="$ctrl.toggleSection('actividades')" class="navbar-button selected" data-section="actividades">
+				<span class="navbar-button-icon ri ri-actividades ri-3x"></span>
+				<span class="navbar-button-text rd-caption">Actividades</span>
+			</div>
+			<div ng-click="$ctrl.toggleSection('herramientas')" class="navbar-button" data-section="herramientas">
+				<span class="navbar-button-icon ri ri-herramienta ri-3x"></span>
+				<span class="navbar-button-text rd-caption">Herramientas</span>
+			</div>
+			<div ng-click="$ctrl.toggleSection('orientaciones')" class="navbar-button" data-section="orientaciones">
+				<span class="navbar-button-icon ri ri-orientaciones ri-3x"></span>
+				<span class="navbar-button-text rd-caption">Orientaciones</span>
+			</div>
+			<div ng-click="$ctrl.toggleSection('mediateca')" class="navbar-button" data-section="mediateca">
+				<span class="navbar-button-icon ri ri-mediateca ri-3x"></span>
+				<span class="navbar-button-text rd-caption">Mediateca</span>
+			</div>
+		</div>
+		<div class="navbar-actions">
+			
 		</div>
 	</div>
 </div>

@@ -1,6 +1,6 @@
 {
   "name": "ronda-ui",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Componentes para el proyecto Ronda",
   "main": "index.js",
   "scripts": {

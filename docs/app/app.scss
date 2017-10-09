@@ -4,6 +4,11 @@ body {
   padding-top: 80px;
 }
 
+*:focus {
+    outline: none;
+}
+
+
 .main-container {
   padding-bottom: 50px;
 }
@@ -93,12 +98,26 @@ ul.ronda-icons-list {
   word-wrap: break-word;
 }
 
+@import '../../scss/_variables';
+
 .ronda-banner {
-  background-color: #673bb7;
   color: white;
 }
 
-@import '../../scss/_variables';
+.ronda-section-toolbar {
+  position: sticky;
+  top: 80px;
+  height: 50px;
+  z-index: 999;
+  -webkit-transition: top .3s; /* Safari */
+  transition: top .3s;
+
+  &.scrolled-toolbar {
+    //width: 100%;
+    //position: fixed;
+    top: 60px;
+  }
+}
 
 .bg-color-red-600 {
   background-color: $color-red-600;
@@ -133,6 +152,27 @@ ul.ronda-icons-list {
 .color-legend {
   text-align: center;
   font-size: 0.7em;
+}
+
+.ronda-banner[data-section="propuestas"],
+.ronda-section-toolbar[data-section="propuestas"] {
+  background-color: $color-propuestas;
+}
+.ronda-banner[data-section="actividades"],
+.ronda-section-toolbar[data-section="actividades"] {
+  background-color: $color-actividades;
+}
+.ronda-banner[data-section="herramientas"],
+.ronda-section-toolbar[data-section="herramientas"] {
+  background-color: $color-herramientas;
+}
+.ronda-banner[data-section="orientaciones"],
+.ronda-section-toolbar[data-section="orientaciones"] {
+  background-color: $color-orientaciones;
+}
+.ronda-banner[data-section="mediateca"],
+.ronda-section-toolbar[data-section="mediateca"] {
+  background-color: $color-mediateca;
 }
 
 /* inject:scss */

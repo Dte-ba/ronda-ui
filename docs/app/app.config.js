@@ -23,8 +23,10 @@ export function runApp() {
 	    
 	    if (scrollTop >= 100) {
 	      $('#main-nav').addClass('scrolled-nav');
+	      $('.ronda-section-toolbar').addClass('scrolled-toolbar');
 	    } else if (scrollTop < 100) {
 	      $('#main-nav').removeClass('scrolled-nav');
+	      $('.ronda-section-toolbar').removeClass('scrolled-toolbar');
 	    } 
 	    
 	  }); 

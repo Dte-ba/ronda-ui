@@ -199,7 +199,7 @@ gulp.task('serve', ['dev', 'webserver'], () => {
 
 gulp.task('watch', () => {
   gulp.watch(
-      ['./src/**/*', './scss/**/*', './docs/app/**/*', '!./scss/_components.scss'],
+      ['./src/**/*', './scss/**/*', './docs/{app,components}/**/*', '!./scss/_components.scss'],
       ['dev']
     );  
 });

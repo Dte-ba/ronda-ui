@@ -2,6 +2,9 @@
 body {
   padding-top: 80px; }
 
+*:focus {
+  outline: none; }
+
 .main-container {
   padding-bottom: 50px; }
 
@@ -73,10 +76,6 @@ ul.ronda-icons-list {
   text-align: center;
   word-wrap: break-word; }
 
-.ronda-banner {
-  background-color: #673bb7;
-  color: white; }
-
 /**
  * PATHS
  */
@@ -92,6 +91,20 @@ ul.ronda-icons-list {
 /**
  * FONTS SIZES
  */
+.ronda-banner {
+  color: white; }
+
+.ronda-section-toolbar {
+  position: sticky;
+  top: 80px;
+  height: 50px;
+  z-index: 999;
+  -webkit-transition: top .3s;
+  /* Safari */
+  transition: top .3s; }
+  .ronda-section-toolbar.scrolled-toolbar {
+    top: 60px; }
+
 .bg-color-red-600 {
   background-color: #e53935; }
 
@@ -123,15 +136,47 @@ ul.ronda-icons-list {
   text-align: center;
   font-size: 0.7em; }
 
+.ronda-banner[data-section="propuestas"],
+.ronda-section-toolbar[data-section="propuestas"] {
+  background-color: #f44336; }
+
+.ronda-banner[data-section="actividades"],
+.ronda-section-toolbar[data-section="actividades"] {
+  background-color: #7e57c2; }
+
+.ronda-banner[data-section="herramientas"],
+.ronda-section-toolbar[data-section="herramientas"] {
+  background-color: #26c6da; }
+
+.ronda-banner[data-section="orientaciones"],
+.ronda-section-toolbar[data-section="orientaciones"] {
+  background-color: #9ccc65; }
+
+.ronda-banner[data-section="mediateca"],
+.ronda-section-toolbar[data-section="mediateca"] {
+  background-color: #f9a825; }
+
 /* inject:scss */
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 #main-nav {
   z-index: 1000;
   width: 100%;
   position: fixed;
   top: 0px; }
+  #main-nav .nav-menu-button {
+    margin-top: 9px;
+    margin-left: 18px;
+    display: none;
+    -webkit-animation: fadeIn 350ms ease-in both;
+    animation: fadeIn 350ms ease-in both; }
   #main-nav .navbar-content {
     height: 80px;
-    line-height: 60px !important;
+    line-height: 80px !important;
     background-color: white;
     -webkit-transition: height .3s, line-height .3s;
     /* Safari */
@@ -143,15 +188,28 @@ ul.ronda-icons-list {
     display: none; }
   #main-nav.scrolled-nav .brand-logo-scrolled {
     display: block; }
+  #main-nav.scrolled-nav .navbar-buttons {
+    display: none; }
+  #main-nav.scrolled-nav .nav-menu-button {
+    display: block; }
   #main-nav .brand-logo {
     width: 154px;
-    margin-top: 17px; }
+    margin-top: 17px;
+    -webkit-animation: fadeIn 350ms ease-in both;
+    animation: fadeIn 350ms ease-in both; }
   #main-nav .brand-logo-scrolled {
     display: none;
     width: 126px;
-    margin-top: 5px; }
+    margin-top: 5px;
+    -webkit-animation: fadeIn 350ms ease-out both;
+    animation: fadeIn 350ms ease-out both; }
   #main-nav .button-bars-container {
     width: 80px; }
+
+.navbar-buttons {
+  height: 80px;
+  -webkit-animation: fadeIn 350ms ease-out both;
+  animation: fadeIn 350ms ease-out both; }
 
 .sticky {
   position: -webkit-sticky;
@@ -162,6 +220,40 @@ ul.ronda-icons-list {
 .sticky:after {
   content: '';
   display: table; }
+
+.navbar-button {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 75px;
+  padding: 2.5px;
+  text-align: center;
+  cursor: pointer;
+  color: #888686; }
+  .navbar-button:hover .navbar-button-text, .navbar-button.selected .navbar-button-text {
+    color: rgba(0, 0, 0, 0.87); }
+  .navbar-button .navbar-button-icon {
+    vertical-align: middle; }
+  .navbar-button .navbar-button-text {
+    display: block;
+    line-height: normal; }
+
+.navbar-button[data-section="propuestas"]:hover .navbar-button-icon, .navbar-button[data-section="propuestas"].selected .navbar-button-icon {
+  color: #f44336; }
+
+.navbar-button[data-section="actividades"]:hover .navbar-button-icon, .navbar-button[data-section="actividades"].selected .navbar-button-icon {
+  color: #7e57c2; }
+
+.navbar-button[data-section="herramientas"]:hover .navbar-button-icon, .navbar-button[data-section="herramientas"].selected .navbar-button-icon {
+  color: #26c6da; }
+
+.navbar-button[data-section="orientaciones"]:hover .navbar-button-icon, .navbar-button[data-section="orientaciones"].selected .navbar-button-icon {
+  color: #9ccc65; }
+
+.navbar-button[data-section="mediateca"]:hover .navbar-button-icon, .navbar-button[data-section="mediateca"].selected .navbar-button-icon {
+  color: #f9a825; }
+
+.navbar-actions {
+  width: 200px; }
 
 footer {
   background: #232425;

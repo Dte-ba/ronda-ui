@@ -1,12 +1,27 @@
+// fix opacity transition
+
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+} 
+
 #main-nav {
 	z-index: 1000;
   width: 100%;
   position: fixed;
   top: 0px;
-  
+	
+	.nav-menu-button {
+    margin-top: 9px;
+    margin-left: 18px;
+		display: none;
+    -webkit-animation: fadeIn 350ms ease-in both;
+  	animation: fadeIn 350ms ease-in both;
+	}
+
 	.navbar-content {
 		height: 80px;
-		line-height: 60px !important;
+		line-height: 80px !important;
 		background-color: white;
 		-webkit-transition: height .3s, line-height .3s; /* Safari */
   	transition: height .3s, line-height .3s;
@@ -25,22 +40,40 @@
 		.brand-logo-scrolled {
 			display: block;
 		}
+
+		.navbar-buttons {
+			display: none;
+		}
+
+		.nav-menu-button {
+			display: block;
+		}
 	}
 
 	.brand-logo {
 	  width: 154px;
 	  margin-top: 17px;
+    -webkit-animation: fadeIn 350ms ease-in both;
+  	animation: fadeIn 350ms ease-in both;
 	}
 
 	.brand-logo-scrolled {
 		display: none;
 	  width: 126px;
 	  margin-top: 5px;
+    -webkit-animation: fadeIn 350ms ease-out both;
+  	animation: fadeIn 350ms ease-out both;
 	}
 
 	.button-bars-container {
 		width: 80px;
 	}
+}
+
+.navbar-buttons {
+	height: 80px;
+  -webkit-animation: fadeIn 350ms ease-out both;
+  animation: fadeIn 350ms ease-out both;
 }
 
 .sticky {
@@ -53,4 +86,74 @@
 .sticky:after {
     content: '';
     display: table;
+}
+
+.navbar-button {
+  display: inline-block;
+  vertical-align: bottom;
+  height: 75px;
+  padding: 2.5px;
+  text-align: center;
+	cursor: pointer;
+	color: $grey-color;
+	
+	&:hover, &.selected {
+		.navbar-button-text {
+			color: $light-color-primary;
+		}
+	}
+
+	.navbar-button-icon {
+		vertical-align: middle;
+	}
+
+  .navbar-button-text {
+  	display: block;
+  	line-height: normal;
+  }
+}
+
+.navbar-button[data-section="propuestas"] {
+	&:hover, &.selected {
+		.navbar-button-icon {
+			color: $color-propuestas;
+		}
+	}
+}
+
+.navbar-button[data-section="actividades"] {
+	&:hover, &.selected {
+		.navbar-button-icon {
+			color: $color-actividades;
+		}
+	}
+}
+
+.navbar-button[data-section="herramientas"] {
+	&:hover, &.selected {
+		.navbar-button-icon {
+			color: $color-herramientas;
+		}
+	}
+}
+
+.navbar-button[data-section="orientaciones"] {
+	&:hover, &.selected {
+		.navbar-button-icon {
+			color: $color-orientaciones;
+		}
+	}
+}
+
+.navbar-button[data-section="mediateca"] {
+	&:hover, &.selected {
+		.navbar-button-icon {
+			color: $color-mediateca;
+		}
+	}
+}
+
+
+.navbar-actions {
+	width: 200px;
 }

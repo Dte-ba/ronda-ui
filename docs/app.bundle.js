@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,16 +71,22 @@ module.exports = angular;
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = jQuery;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _ = __webpack_require__(2);
+var _ = __webpack_require__(3);
 
 var _2 = _interopRequireDefault(_);
 
-var _app = __webpack_require__(5);
+var _app = __webpack_require__(6);
 
 var _appDirective = __webpack_require__(7);
 
@@ -123,20 +129,20 @@ angular.element(document).ready(function () {
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 // Now import the lib here
-__webpack_require__(3);
+__webpack_require__(4);
 
 // Export namespace
 module.exports = 'ronda-ui';
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -429,10 +435,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   );
 });
 //# sourceMappingURL=ronda.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)(module)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -460,7 +466,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -473,7 +479,7 @@ routeConfig.$inject = ['$urlRouterProvider', '$locationProvider'];
 exports.routeConfig = routeConfig;
 exports.runApp = runApp;
 
-var _jquery = __webpack_require__(6);
+var _jquery = __webpack_require__(1);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -500,18 +506,14 @@ function runApp() {
 
 			if (scrollTop >= 100) {
 				(0, _jquery2.default)('#main-nav').addClass('scrolled-nav');
+				(0, _jquery2.default)('.ronda-section-toolbar').addClass('scrolled-toolbar');
 			} else if (scrollTop < 100) {
 				(0, _jquery2.default)('#main-nav').removeClass('scrolled-nav');
+				(0, _jquery2.default)('.ronda-section-toolbar').removeClass('scrolled-toolbar');
 			}
 		});
 	});
 }
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-module.exports = jQuery;
 
 /***/ }),
 /* 7 */
@@ -655,7 +657,7 @@ function routes($stateProvider) {
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ronda-banner banner-sample\" layout=\"row\" layout-align=\"center start\">\n\t<div flex=\"60\" layout=\"column\">\n\t\t<div></div>\n\t\t<div flex>\n\t\t\t<h1 class=\"headpost title\">Ronda UI</h1>\n\t\t\t<p class=\"headpost\">Ronda UI es un conjunto de componentes diseñados y desarrollados por el equipo de la <a href=\"http://dte.abc.gov.ar/\">Dirección de Tecnología Educativa de la Provincia de Buenos Aires</a> para el proyecto de contenidos digitales con fines educativos <a href=\"https://www.github.com/Dte-ba/ronda\"><strong>Ronda</strong></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"ronda-container\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/typography.html'\"></div>\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/icons.html'\"></div>\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/colors.html'\"></div>\n\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/buttons.html'\"></div>\n\n\t</div>\n</div>\n\n"
+module.exports = "<div class=\"ronda-section-toolbar\" data-section=\"actividades\"></div>\n<div class=\"ronda-banner banner-sample\" layout=\"row\" layout-align=\"center start\" \n\t\t data-section=\"actividades\">\n\t<div flex=\"60\" layout=\"column\">\n\t\t<div></div>\n\t\t<div flex>\n\t\t\t<h1 class=\"headpost title\">Ronda UI</h1>\n\t\t\t<p class=\"headpost\">Ronda UI es un conjunto de componentes diseñados y desarrollados por el equipo de la <a href=\"http://dte.abc.gov.ar/\">Dirección de Tecnología Educativa de la Provincia de Buenos Aires</a> para el proyecto de contenidos digitales con fines educativos <a href=\"https://www.github.com/Dte-ba/ronda\"><strong>Ronda</strong></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"ronda-container\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/typography.html'\"></div>\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/icons.html'\"></div>\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/colors.html'\"></div>\n\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/buttons.html'\"></div>\n\n\t</div>\n</div>\n\n"
 
 /***/ }),
 /* 12 */
@@ -667,8 +669,15 @@ module.exports = "<div class=\"ronda-banner banner-sample\" layout=\"row\" layou
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.NavbarComponent = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jquery = __webpack_require__(1);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -677,11 +686,24 @@ var NavbarComponent = exports.NavbarComponent = function () {
   /*@ngInject*/
   function NavbarComponent() {
     _classCallCheck(this, NavbarComponent);
+
+    this.currentSection = 'actividades';
   }
 
   _createClass(NavbarComponent, [{
     key: '$onInit',
     value: function $onInit() {}
+  }, {
+    key: 'toggleSection',
+    value: function toggleSection(section) {
+      if (this.currentSection === section) {
+        return;
+      }
+      this.currentSection = section;
+      (0, _jquery2.default)('.ronda-banner, .ronda-section-toolbar').attr('data-section', section);
+      (0, _jquery2.default)('.navbar-button').removeClass('selected');
+      (0, _jquery2.default)('.navbar-button[data-section="' + section + '"]').addClass('selected');
+    }
   }]);
 
   return NavbarComponent;
@@ -696,7 +718,7 @@ exports.default = angular.module('rondaDocs.navbar', []).component('navbar', {
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar-content\" md-whiteframe=\"4\">\n\t<div layout=\"row\">\n\t\t<span class=\"button-bars-container\"></span>\n\t\t<div class=\"brand-logo\">\n\t\t\t<object data=\"assets/ronda-logo.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t\t<div class=\"brand-logo-scrolled\">\n\t\t\t<object data=\"assets/ronda-logo-header.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<div class=\"navbar-content\" md-whiteframe=\"4\">\n\t<div layout=\"row\">\n\t\t<div class=\"button-bars-container\" layout=\"row\">\n\t\t\t<md-button class=\"nav-menu-button md-icon-button grey-color\" aria-label=\"Menu\">\n        <md-icon md-font-icon=\"fa-bars\" class=\"fa fa-2x\"></md-icon>\n      </md-button>\n\t\t</div>\n\t\t<div class=\"brand-logo\">\n\t\t\t<object data=\"assets/ronda-logo.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t\t<div class=\"brand-logo-scrolled\">\n\t\t\t<object data=\"assets/ronda-logo-header.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t\t<div flex class=\"navbar-buttons\" layout=\"row\" layout-align=\"center center\">\n\t\t\t<div ng-click=\"$ctrl.toggleSection('propuestas')\" class=\"navbar-button\" data-section=\"propuestas\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-propuestas ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Propuesta didáctica</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('actividades')\" class=\"navbar-button selected\" data-section=\"actividades\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-actividades ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Actividades</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('herramientas')\" class=\"navbar-button\" data-section=\"herramientas\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-herramienta ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Herramientas</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('orientaciones')\" class=\"navbar-button\" data-section=\"orientaciones\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-orientaciones ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Orientaciones</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('mediateca')\" class=\"navbar-button\" data-section=\"mediateca\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-mediateca ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Mediateca</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"navbar-actions\">\n\t\t\t\n\t\t</div>\n\t</div>\n</div>"
 
 /***/ }),
 /* 14 */
