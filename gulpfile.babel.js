@@ -24,7 +24,8 @@ const docsPath = './docs';
 const scssPath = './scss';
 
 var getHeader = () => {
-  const version = require('./package.json').version;
+  var data = fs.readFileSync('./package.json');
+  const version = JSON.parse(data).version;
   return [
     ` @license Ronda UI v${version}`,
     ' Copyright (c) 2017 Dte-ba',
