@@ -12,6 +12,22 @@ $footer-height: 60px;
 $sitemap-height: 80px;
 
 /**
+ * LAYOUT
+ */
+$gutter: 80;
+$gutter-fluid: 24;
+$container-gutter: ($gutter*2);
+$container-gutter-fluid: ($gutter-fluid*2);
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+$breakpoints: ( "xs", "sm", "md", "lg", "xl" );
+
+/**
  * COLORS
  */
 $ba-color:           #80a424;
@@ -44,6 +60,11 @@ $color-actividades:   $color-deep-purple-400;
 $color-herramientas:  $color-cyan-400;
 $color-orientaciones: $color-light-green-400;
 $color-mediateca:     $color-yellow-400;
+
+/**
+ * Navbar
+ */
+$navbar-menu-button-container: $gutter - $gutter-fluid;
 
 /**
  * FONTS

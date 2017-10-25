@@ -1,5 +1,3 @@
-import rondaUI from '../../';
-
 import {
   routeConfig,
   runApp
@@ -10,6 +8,7 @@ import hljs from './app.directive.hljs';
 
 // endpoints
 import main from './main/main.component';
+import experiments from './experiments/experiments.component';
 
 // components
 import navbar from '../components/navbar/navbar.component';
@@ -26,12 +25,13 @@ angular.module('rondaDocs', [
   'ngMessages',
   'ngMaterial',
   'ui.router',
+  'ronda-ui',
   hljs,
-  rondaUI,
   navbar,
   footer,
   sitemap,
   main,
+  experiments
 ])
 .run(runApp)
 .config(routeConfig);

@@ -33,13 +33,14 @@ module.exports = function makeWebpackConfig(ops) {
     devtool: 'source-map',
     output: {
       path: __dirname + '/build/',
-      filename: isBUILD ? 'ronda.min.js' : 'ronda.js',
+      filename: isBUILD ? 'ronda-ui.min.js' : 'ronda-ui.js',
       library: libraryName,
       libraryTarget: 'umd',
       umdNamedDefine: true
     },
     externals: { 
-      'angular': 'angular'
+      'angular': 'angular',
+      'jquery': 'jQuery'
     },
     module: {
       rules: [
@@ -52,6 +53,13 @@ module.exports = function makeWebpackConfig(ops) {
               presets: ['env']
             }
           }
+        }, {
+
+            // HTML LOADER
+            // Reference: https://github.com/webpack/raw-loader
+            // Allow loading html through js
+            test: /\.html$/,
+            loader: 'raw-loader'
         }
       ]
     },

@@ -1,0 +1,17 @@
+@import './_breakpoints';
+
+@mixin make-container($gutter) {
+	display: flex;
+  flex-wrap: wrap;
+  padding-right: ($gutter / 2);
+  padding-left: ($gutter / 2);
+}
+
+@mixin make-content($gutter) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: ($gutter / -2);
+  margin-left: ($gutter / -2);
+  padding-right: ($gutter / 2);
+	padding-left: ($gutter / 2);
+}

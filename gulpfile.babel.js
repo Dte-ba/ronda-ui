@@ -11,6 +11,8 @@ import batch from 'gulp-batch';
 import fontkit from 'fontkit';
 import fs from 'fs';
 import ejs from 'gulp-ejs';
+import path from 'path';
+import url from 'url';
 
 var plugins = gulpLoadPlugins();
 var config;
@@ -65,7 +67,7 @@ gulp.task('inject:scss', () => {
         .pipe(plugins.sort()), {
         transform: (filepath) => {
           let newPath = filepath
-            .replace(`/${srcPath}/components/`, '../src/components/')
+            .replace(`/src/`, '../src/')
             .replace(/_(.*).scss/, (match, p1, offset, string) => p1)
             .replace('.scss', '');
           return `@import '${newPath}';`;
@@ -75,15 +77,15 @@ gulp.task('inject:scss', () => {
 });
 
 gulp.task('scss:dev', function () {
-  return gulp.src('./scss/ronda.scss')
+  return gulp.src('./scss/ronda-ui.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./build'));
 });
 
 gulp.task('scss:build', function () {
-  return gulp.src('./scss/ronda.scss')
+  return gulp.src('./scss/ronda-ui.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(rename({ basename: 'ronda.min' }))
+    .pipe(rename({ basename: 'ronda-ui.min' }))
     .pipe(gulp.dest('./build'));
 });
 
@@ -168,7 +170,16 @@ gulp.task('webserver', function() {
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
-      open: false
+      open: false,
+      middleware: (req, res, next) => {
+        let parsed = url.parse(req.url);
+        let ext = path.extname(parsed.pathname);
+        if (ext === ''){
+          res.writeHead(200, { 'Content-Type': 'text/html' });
+          return fs.createReadStream('./index.html').pipe(res);
+        }
+        next();
+      }
     }));
 });
 

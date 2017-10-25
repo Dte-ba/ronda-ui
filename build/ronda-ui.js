@@ -1,19 +1,13 @@
-/**
- * @license Ronda UI v0.0.14
- * Copyright (c) 2017 Dte-ba
- * MIT License
- */
-
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("angular"));
+		module.exports = factory(require("angular"), require("jQuery"));
 	else if(typeof define === 'function' && define.amd)
-		define("rondaUI", ["angular"], factory);
+		define("rondaUI", ["angular", "jQuery"], factory);
 	else if(typeof exports === 'object')
-		exports["rondaUI"] = factory(require("angular"));
+		exports["rondaUI"] = factory(require("angular"), require("jQuery"));
 	else
-		root["rondaUI"] = factory(root["angular"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+		root["rondaUI"] = factory(root["angular"], root["jQuery"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_6__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -86,17 +80,31 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
 var _angular = __webpack_require__(1);
 
 var _angular2 = _interopRequireDefault(_angular);
 
 var _config = __webpack_require__(2);
 
+var _container = __webpack_require__(4);
+
+var _container2 = _interopRequireDefault(_container);
+
+var _navbar = __webpack_require__(5);
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_angular2.default.module('ronda-ui', ['ngMaterial']).config(_config.rondaConfig);
+// components
+var includes = ['ngMaterial', _container2.default, _navbar2.default];
 
 // configs
+exports.default = _angular2.default.module('ronda-ui', includes).config(_config.rondaConfig).name;
 
 /***/ }),
 /* 1 */
@@ -269,7 +277,158 @@ exports.default = function ($mdThemingProvider) {
   });
 };
 
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+exports.default = angular.module('ronda-ui.components.container', []).directive('rdContainer', RdContainer).name;
+
+var RdContentController =
+/*@ngInject*/
+function RdContentController($scope, $element) {
+	_classCallCheck(this, RdContentController);
+
+	this.$scope = $scope;
+	this.$element = $element;
+};
+
+RdContentController.$inject = ['$scope', '$element'];
+RdContentController.$inject = ['$scope', '$element'];
+
+
+function RdContainer() {
+	'ngInject';
+
+	return {
+		restrict: 'E',
+		controller: RdContentController,
+		link: function link(scope, element, attrs, ctrl, transclude) {
+
+			var fluid = attrs.rdContainerFluid || '';
+			var isFluid = attrs.rdContainerFluid !== undefined;
+
+			element.addClass('rd-container');
+
+			var cls = '';
+
+			if (isFluid) {
+				fluid = fluid.trim();
+				cls = 'rd-container-fluid';
+				if (typeof fluid === 'string' && fluid !== '') {
+					cls = '';
+					var fuilds = fluid.split(/\s+/);
+					fuilds.forEach(function (t) {
+						cls += 'rd-container-fluid-' + t + ' ';
+					});
+				}
+			}
+
+			element.addClass(cls);
+		}
+	};
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+RdNavbar.$inject = ['$window'];
+
+var _jquery = __webpack_require__(6);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var HIEGHT_BREACKPOINT = 100;
+
+exports.default = angular.module('ronda-ui.components.navbar', []).directive('rdNavbar', RdNavbar).name;
+
+var RdNavbarController =
+/*@ngInject*/
+function RdNavbarController($scope, $element, $window, $mdMedia) {
+	var _this = this;
+
+	_classCallCheck(this, RdNavbarController);
+
+	this.$scope = $scope;
+	this.$element = $element;
+
+	this.$element.addClass('rd-navbar md-whiteframe-4dp');
+
+	this.$scope.$watch(function () {
+		return $mdMedia('xs') || $mdMedia('sm');
+	}, function (mobile) {
+		_this.$scope.isMobile = mobile === true;
+	});
+
+	var clsScrolled = 'rd-scrolled';
+
+	(0, _jquery2.default)(document).ready(function () {
+		var scrollTop = 0;
+		(0, _jquery2.default)(window).scroll(function () {
+			scrollTop = (0, _jquery2.default)(window).scrollTop();
+			if (scrollTop >= HIEGHT_BREACKPOINT) {
+				_this.$element.addClass(clsScrolled);
+			} else if (scrollTop < HIEGHT_BREACKPOINT) {
+				_this.$element.removeClass(clsScrolled);
+			}
+		});
+	});
+};
+
+RdNavbarController.$inject = ['$scope', '$element', '$window', '$mdMedia'];
+RdNavbarController.$inject = ['$scope', '$element', '$window', '$mdMedia'];
+
+
+function RdNavbar($window) {
+	'ngInject';
+
+	return {
+		restrict: 'E',
+		controller: RdNavbarController,
+		scope: {
+			logo: '@logo',
+			logoScrolled: '@logoScrolled'
+		},
+		transclude: {
+			'items': 'rdNavbarItems',
+			'tools': 'rdNavbarTools'
+		},
+		template: __webpack_require__(7)
+	};
+}
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = "<rd-container rd-container-fluid class=\"rd-navbar-content\" layout=\"row\" ng-class=\"{ 'rd-navbar-mobile': isMobile }\" data-sm=\"{{isMobile}}\">\n\t<div class=\"rd-menu-button-container\" layout=\"row\" layout-align=\"start center\">\n\t\t<md-button class=\"rd-menu-button md-icon-button grey-color\" aria-label=\"Menu\">\n      <md-icon md-font-icon=\"fa-bars\" class=\"fa fa-2x\"></md-icon>\n    </md-button>\n\t</div>\n\t<div class=\"rd-navbar-brand\">\n\t\t<div class=\"rd-brand-logo\">\n\t\t\t<img ng-src=\"{{logo}}\" alt=\"Logo\">\n\t\t</div>\n\t\t<div class=\"rd-brand-logo-scrolled\">\n\t\t\t<img ng-src=\"{{logoScrolled}}\" alt=\"Logo\">\n\t\t</div>\n\t</div>\n\t<div flex class=\"rd-navbar-items\" ng-transclude=\"items\"></div>\n\t<div flex-sm flex-xs class=\"rd-navbar-tools\" ng-transclude=\"tools\" layout=\"row\" layout-align=\"end center\"></div>\n</rd-container>"
+
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=ronda.js.map
+//# sourceMappingURL=ronda-ui.js.map
