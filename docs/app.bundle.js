@@ -356,9 +356,18 @@ var ExperimentsController = exports.ExperimentsController = function () {
     _classCallCheck(this, ExperimentsController);
 
     this.$http = $http;
+
+    this.selected = 'propuestas';
+
+    this.navbarItems = [{ section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuesta didáctica' }, { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' }, { section: 'herramienta', icon: 'ri ri-herramienta', caption: 'Herramientas' }, { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' }, { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }];
   }
 
   _createClass(ExperimentsController, [{
+    key: 'itemClicked',
+    value: function itemClicked(item) {
+      this.selected = item.section;
+    }
+  }, {
     key: '$onInit',
     value: function $onInit() {}
   }]);
@@ -396,7 +405,7 @@ function routes($stateProvider) {
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "<rd-navbar logo=\"assets/ronda-logo.svg\" logo-scrolled=\"assets/ronda-logo-header.svg\">\n\t<rd-navbar-items>\n\t\titems\n\t</rd-navbar-items>\n\t<rd-navbar-tools>\n\t\ttools\n\t</rd-navbar-tools>\n</rd-navbar>\n\n<rd-container>\n\tsome content here\n</rd-container>\n\n<rd-container rd-container-fluid>\n\tsome content here\n</rd-container>\n\n<rd-container rd-container-fluid=\"gt-md gt-xl\">\n\tsome content here\n</rd-container>\n\n<div style=\"height: 500px\"></div>"
+module.exports = "\n<rd-navbar logo=\"assets/ronda-logo.svg\" logo-scrolled=\"assets/ronda-logo-header.svg\">\n\t<rd-navbar-items>\n\t\t<rd-navbar-item \n\t\t\tng-repeat=\"item in $ctrl.navbarItems\" \n\t\t\tng-model=\"item\" \n\t\t\tnavbar-item-selected=\"item.section === $ctrl.selected\"\n\t\t\tng-click=\"$ctrl.itemClicked(item)\"/>\n\t</rd-navbar-items>\n\t<rd-navbar-tools>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-lupa\" navbar-item-selected=\"true\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"mi mi-home\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-mochila\"/>\n\t</rd-navbar-tools>\n</rd-navbar>\n\n<rd-container>\n\tsome content here\n</rd-container>\n\n<rd-container container-fluid>\n\tsome content here\n</rd-container>\n\n<rd-container container-fluid=\"gt-md gt-xl\">\n\tsome content here\n</rd-container>\n\n<div style=\"height: 500px\"></div>"
 
 /***/ }),
 /* 12 */

@@ -1,7 +1,7 @@
-<rd-container rd-container-fluid class="rd-navbar-content" layout="row" ng-class="{ 'rd-navbar-mobile': isMobile }" data-sm="{{isMobile}}">
+<rd-container container-fluid class="rd-navbar-content" layout="row" ng-class="{ 'rd-navbar-mobile': isMobile }" data-sm="{{isMobile}}" md-whiteframe="4">
 	<div class="rd-menu-button-container" layout="row" layout-align="start center">
-		<md-button class="rd-menu-button md-icon-button grey-color" aria-label="Menu">
-      <md-icon md-font-icon="fa-bars" class="fa fa-2x"></md-icon>
+		<md-button class="rd-menu-button md-icon-button grey-color" aria-label="Menu" ng-click="toggleDropdown($event)">
+      <md-icon>menu</md-icon>
     </md-button>
 	</div>
 	<div class="rd-navbar-brand">
@@ -12,6 +12,8 @@
 			<img ng-src="{{logoScrolled}}" alt="Logo">
 		</div>
 	</div>
-	<div flex class="rd-navbar-items" ng-transclude="items"></div>
-	<div flex-sm flex-xs class="rd-navbar-tools" ng-transclude="tools" layout="row" layout-align="end center"></div>
+	<div flex class="rd-navbar-body" ng-transclude="body" ng-hide="isMobile"></div>
+	<div flex class="rd-navbar-items rd-navbar-items-horizontal" ng-transclude="items" layout="row" layout-align="center center"></div>
+	<div flex-sm flex-xs class="rd-navbar-items-tools" ng-transclude="tools" layout="row" layout-align="end center"></div>
 </rd-container>
+<div flex class="rd-navbar-dropdown rd-navbar-items-dropdown" ng-transclude="items" md-whiteframe="2" ng-show="dropdownOpened"></div>

@@ -98,12 +98,16 @@ var _navbar = __webpack_require__(5);
 
 var _navbar2 = _interopRequireDefault(_navbar);
 
+var _navbarItem = __webpack_require__(8);
+
+var _navbarItem2 = _interopRequireDefault(_navbarItem);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// components
-var includes = ['ngMaterial', _container2.default, _navbar2.default];
-
 // configs
+var includes = ['ngMaterial', _container2.default, _navbar2.default, _navbarItem2.default];
+
+// components
 exports.default = _angular2.default.module('ronda-ui', includes).config(_config.rondaConfig).name;
 
 /***/ }),
@@ -299,6 +303,27 @@ function RdContentController($scope, $element) {
 
 	this.$scope = $scope;
 	this.$element = $element;
+
+	this.$element.addClass('rd-container');
+
+	var fluid = this.$scope.containerFluid || '';
+	var isFluid = this.$scope.containerFluid !== undefined;
+
+	var cls = '';
+
+	if (isFluid) {
+		fluid = fluid.trim();
+		cls = 'rd-container-fluid';
+		if (typeof fluid === 'string' && fluid !== '') {
+			cls = '';
+			var fuilds = fluid.split(/\s+/);
+			fuilds.forEach(function (t) {
+				cls += 'rd-container-fluid-' + t + ' ';
+			});
+		}
+	}
+
+	this.$element.addClass(cls);
 };
 
 RdContentController.$inject = ['$scope', '$element'];
@@ -311,28 +336,8 @@ function RdContainer() {
 	return {
 		restrict: 'E',
 		controller: RdContentController,
-		link: function link(scope, element, attrs, ctrl, transclude) {
-
-			var fluid = attrs.rdContainerFluid || '';
-			var isFluid = attrs.rdContainerFluid !== undefined;
-
-			element.addClass('rd-container');
-
-			var cls = '';
-
-			if (isFluid) {
-				fluid = fluid.trim();
-				cls = 'rd-container-fluid';
-				if (typeof fluid === 'string' && fluid !== '') {
-					cls = '';
-					var fuilds = fluid.split(/\s+/);
-					fuilds.forEach(function (t) {
-						cls += 'rd-container-fluid-' + t + ' ';
-					});
-				}
-			}
-
-			element.addClass(cls);
+		scope: {
+			containerFluid: '@containerFluid'
 		}
 	};
 }
@@ -347,6 +352,9 @@ function RdContainer() {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 RdNavbar.$inject = ['$window'];
 
 var _jquery = __webpack_require__(6);
@@ -361,42 +369,72 @@ var HIEGHT_BREACKPOINT = 100;
 
 exports.default = angular.module('ronda-ui.components.navbar', []).directive('rdNavbar', RdNavbar).name;
 
-var RdNavbarController =
-/*@ngInject*/
-function RdNavbarController($scope, $element, $window, $mdMedia) {
-	var _this = this;
+var RdNavbarController = function () {
+	RdNavbarController.$inject = ['$scope', '$element', '$window', '$mdMedia', '$timeout'];
 
-	_classCallCheck(this, RdNavbarController);
+	/*@ngInject*/
+	function RdNavbarController($scope, $element, $window, $mdMedia, $timeout) {
+		var _this = this;
 
-	this.$scope = $scope;
-	this.$element = $element;
+		_classCallCheck(this, RdNavbarController);
 
-	this.$element.addClass('rd-navbar md-whiteframe-4dp');
+		this.$scope = $scope;
+		this.$element = $element;
+		this.$timeout = $timeout;
 
-	this.$scope.$watch(function () {
-		return $mdMedia('xs') || $mdMedia('sm');
-	}, function (mobile) {
-		_this.$scope.isMobile = mobile === true;
-	});
+		this.$element.addClass('rd-navbar');
 
-	var clsScrolled = 'rd-scrolled';
-
-	(0, _jquery2.default)(document).ready(function () {
-		var scrollTop = 0;
-		(0, _jquery2.default)(window).scroll(function () {
-			scrollTop = (0, _jquery2.default)(window).scrollTop();
-			if (scrollTop >= HIEGHT_BREACKPOINT) {
-				_this.$element.addClass(clsScrolled);
-			} else if (scrollTop < HIEGHT_BREACKPOINT) {
-				_this.$element.removeClass(clsScrolled);
-			}
+		this.$scope.$watch(function () {
+			return $mdMedia('xs') || $mdMedia('sm');
+		}, function (mobile) {
+			_this.$scope.isMobile = mobile === true;
 		});
-	});
-};
 
-RdNavbarController.$inject = ['$scope', '$element', '$window', '$mdMedia'];
-RdNavbarController.$inject = ['$scope', '$element', '$window', '$mdMedia'];
+		var clsScrolled = 'rd-scrolled';
 
+		(0, _jquery2.default)(document).ready(function () {
+			var scrollTop = 0;
+			(0, _jquery2.default)(window).scroll(function () {
+				scrollTop = (0, _jquery2.default)(window).scrollTop();
+				if (scrollTop >= HIEGHT_BREACKPOINT) {
+					_this.$element.addClass(clsScrolled);
+				} else if (scrollTop < HIEGHT_BREACKPOINT) {
+					_this.$element.removeClass(clsScrolled);
+				}
+
+				_this.removeDropdown();
+			});
+
+			(0, _jquery2.default)(document).click(function () {
+				_this.removeDropdown();
+			});
+		});
+
+		// the dropdown
+		this.$scope.dropdownOpened = false;
+		this.$scope.toggleDropdown = function ($event) {
+			_this.$scope.dropdownOpened = !_this.$scope.dropdownOpened;
+			$event.stopPropagation();
+		};
+	}
+
+	_createClass(RdNavbarController, [{
+		key: 'removeDropdown',
+		value: function removeDropdown() {
+			var _this2 = this;
+
+			// remove the dropdown
+			if (this.$scope.dropdownOpened) {
+				this.$scope.dropdownOpened = false;
+				this.$timeout(function () {
+					_this2.$scope.$apply();
+				});
+			}
+		}
+	}]);
+
+	return RdNavbarController;
+}();
 
 function RdNavbar($window) {
 	'ngInject';
@@ -410,7 +448,8 @@ function RdNavbar($window) {
 		},
 		transclude: {
 			'items': 'rdNavbarItems',
-			'tools': 'rdNavbarTools'
+			'tools': 'rdNavbarTools',
+			'body': '?rdNavbarBody'
 		},
 		template: __webpack_require__(7)
 	};
@@ -426,7 +465,83 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<rd-container rd-container-fluid class=\"rd-navbar-content\" layout=\"row\" ng-class=\"{ 'rd-navbar-mobile': isMobile }\" data-sm=\"{{isMobile}}\">\n\t<div class=\"rd-menu-button-container\" layout=\"row\" layout-align=\"start center\">\n\t\t<md-button class=\"rd-menu-button md-icon-button grey-color\" aria-label=\"Menu\">\n      <md-icon md-font-icon=\"fa-bars\" class=\"fa fa-2x\"></md-icon>\n    </md-button>\n\t</div>\n\t<div class=\"rd-navbar-brand\">\n\t\t<div class=\"rd-brand-logo\">\n\t\t\t<img ng-src=\"{{logo}}\" alt=\"Logo\">\n\t\t</div>\n\t\t<div class=\"rd-brand-logo-scrolled\">\n\t\t\t<img ng-src=\"{{logoScrolled}}\" alt=\"Logo\">\n\t\t</div>\n\t</div>\n\t<div flex class=\"rd-navbar-items\" ng-transclude=\"items\"></div>\n\t<div flex-sm flex-xs class=\"rd-navbar-tools\" ng-transclude=\"tools\" layout=\"row\" layout-align=\"end center\"></div>\n</rd-container>"
+module.exports = "<rd-container container-fluid class=\"rd-navbar-content\" layout=\"row\" ng-class=\"{ 'rd-navbar-mobile': isMobile }\" data-sm=\"{{isMobile}}\" md-whiteframe=\"4\">\n\t<div class=\"rd-menu-button-container\" layout=\"row\" layout-align=\"start center\">\n\t\t<md-button class=\"rd-menu-button md-icon-button grey-color\" aria-label=\"Menu\" ng-click=\"toggleDropdown($event)\">\n      <md-icon>menu</md-icon>\n    </md-button>\n\t</div>\n\t<div class=\"rd-navbar-brand\">\n\t\t<div class=\"rd-brand-logo\">\n\t\t\t<img ng-src=\"{{logo}}\" alt=\"Logo\">\n\t\t</div>\n\t\t<div class=\"rd-brand-logo-scrolled\">\n\t\t\t<img ng-src=\"{{logoScrolled}}\" alt=\"Logo\">\n\t\t</div>\n\t</div>\n\t<div flex class=\"rd-navbar-body\" ng-transclude=\"body\" ng-hide=\"isMobile\"></div>\n\t<div flex class=\"rd-navbar-items rd-navbar-items-horizontal\" ng-transclude=\"items\" layout=\"row\" layout-align=\"center center\"></div>\n\t<div flex-sm flex-xs class=\"rd-navbar-items-tools\" ng-transclude=\"tools\" layout=\"row\" layout-align=\"end center\"></div>\n</rd-container>\n<div flex class=\"rd-navbar-dropdown rd-navbar-items-dropdown\" ng-transclude=\"items\" md-whiteframe=\"2\" ng-show=\"dropdownOpened\"></div>"
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+exports.default = angular.module('ronda-ui.components.navbarItem', []).directive('rdNavbarItem', RdContainer).name;
+
+var RdNavbarItemController =
+/*@ngInject*/
+function RdNavbarItemController($scope, $element) {
+	var _this = this;
+
+	_classCallCheck(this, RdNavbarItemController);
+
+	this.$scope = $scope;
+	this.$element = $element;
+	// has a model?
+	var m = this.$scope.ngModel;
+	if (m && (typeof m === 'undefined' ? 'undefined' : _typeof(m)) === 'object') {
+		//replace the scope;
+		this.$scope.icon = m.icon;
+		this.$scope.caption = m.caption;
+		this.$scope.section = m.section;
+	}
+
+	this.$element.addClass('rd-navbar-item');
+	this.$element.attr('data-rd-section', this.$scope.section);
+
+	this.$scope.$watch(function () {
+		return _this.$scope.selected;
+	}, function (value) {
+		if (value) {
+			_this.$element.addClass('selected');
+		} else {
+			_this.$element.removeClass('selected');
+		}
+	});
+};
+
+RdNavbarItemController.$inject = ['$scope', '$element'];
+RdNavbarItemController.$inject = ['$scope', '$element'];
+
+
+function RdContainer() {
+	'ngInject';
+
+	return {
+		restrict: 'E',
+		controller: RdNavbarItemController,
+		scope: {
+			icon: '@navbarItemIcon',
+			caption: '@navbarItemCaption',
+			section: '@navbarItemSection',
+			ngModel: '=',
+			selected: '=navbarItemSelected'
+		},
+		template: __webpack_require__(9)
+	};
+}
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = "<span class=\"rd-navbar-item-icon\" ng-class=\"icon\"></span>\n<span class=\"rd-navbar-item-caption rd-caption\">{{caption}}</span>"
 
 /***/ })
 /******/ ]);

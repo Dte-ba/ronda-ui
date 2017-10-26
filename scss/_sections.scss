@@ -1,45 +1,13 @@
 // fore colors
-.color-propuestas {
-	color: $color-propuestas;
-}
-
-.color-actividades {
-	color: $color-actividades;
-}
-
-.color-herramientas {
-	color: $color-herramientas;
-}
-
-.color-orientaciones {
-	color: $color-orientaciones;
-}
-
-.color-mediateca {
-	color: $color-mediateca;
-}
-
-.grey-color {
-	color: $grey-color;
+@each $key, $section in $sections {
+	.color-#{$key} {
+		color: map-get($section, color);
+	}
 }
 
 // backgrounds
-.bg-propuestas {
-	background-color: $color-propuestas;
-}
-
-.bg-actividades {
-	background-color: $color-actividades;
-}
-
-.bg-herramientas {
-	background-color: $color-herramientas;
-}
-
-.bg-orientaciones {
-	background-color: $color-orientaciones;
-}
-
-.bg-mediateca {
-	background-color: $color-mediateca;
+@each $key, $section in $sections {
+	.bg-#{$key} {
+		background-color: map-get($section, color);
+	}
 }

@@ -10,6 +10,27 @@ class RdContentController {
 	constructor($scope, $element){
 		this.$scope = $scope;
     this.$element = $element;
+
+    this.$element.addClass('rd-container');
+
+    let fluid = this.$scope.containerFluid || '';
+		let isFluid = this.$scope.containerFluid !== undefined;
+
+		let cls = '';
+
+		if (isFluid){
+			fluid = fluid.trim();
+			cls = 'rd-container-fluid';
+			if (typeof fluid === 'string' && fluid !== ''){
+				cls = '';
+				let fuilds = fluid.split(/\s+/);
+				fuilds.forEach(t => {
+					cls += `rd-container-fluid-${t} `;
+				});
+			}
+		}
+		
+		this.$element.addClass(cls);
 	}
 }
 
@@ -19,28 +40,8 @@ function RdContainer(){
 	return {
 		restrict: 'E',
 		controller: RdContentController,
-		link: (scope, element, attrs, ctrl, transclude) => {
-			
-			let fluid = attrs.rdContainerFluid || '';
-			let isFluid = attrs.rdContainerFluid !== undefined;
-
-			element.addClass('rd-container');
-
-			let cls = '';
-
-			if (isFluid){
-				fluid = fluid.trim();
-				cls = 'rd-container-fluid';
-				if (typeof fluid === 'string' && fluid !== ''){
-					cls = '';
-					let fuilds = fluid.split(/\s+/);
-					fuilds.forEach(t => {
-						cls += `rd-container-fluid-${t} `;
-					});
-				}
-			}
-			
-			element.addClass(cls);
+		scope: {
+			containerFluid: '@containerFluid'
 		}
 	}
 }

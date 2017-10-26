@@ -8,6 +8,7 @@ $ronda-font-path: '../fonts';
 /**
  * CORE
  */
+$screen-min-width: 420px;
 $footer-height: 60px;
 $sitemap-height: 80px;
 
@@ -54,6 +55,9 @@ $color-cyan-400:        #26c6da;
 $color-light-green-400: #9ccc65;
 $color-yellow-400:      #f9a825;
 
+/**
+ * SECTIONS
+ */
 // section colors
 $color-propuestas:    $color-red-500;
 $color-actividades:   $color-deep-purple-400;
@@ -61,10 +65,28 @@ $color-herramientas:  $color-cyan-400;
 $color-orientaciones: $color-light-green-400;
 $color-mediateca:     $color-yellow-400;
 
+$sections: (
+	propuestas: ( color: $color-propuestas ),
+	actividades: ( color: $color-actividades ),
+	herramienta: ( color: $color-herramientas ),
+	orientaciones: ( color: $color-orientaciones ),
+	mediateca: ( color: $color-mediateca )
+) !default;
+
 /**
  * Navbar
  */
+$navbar-height: 80px;
+$navbar-scrolled-height: 60px;
+$navbar-background-color: white;
+$navbar-z-index: 10000;
 $navbar-menu-button-container: $gutter - $gutter-fluid;
+$navbar-brand-logo-width: 154px;
+$navbar-brand-logo-width-scrolled: 126px;
+$navbar-brand-logo-margin-top: 17px;
+$navbar-brand-logo-margin-top-scrolled: 5px;
+$navbar-dropdown-width: 230px;
+$navbar-dropdown-z-index: -1;
 
 /**
  * FONTS
