@@ -509,7 +509,7 @@ exports.default = angular.module('rondaDocs.footer', []).component('footer', {
 /* 15 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ronda-container\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"footer-content\" layout=\"row\" layout-align=\"center center\" layout-xs=\"column\">\n\t\t  <div flex></div>\n\t\t  <div>\n\t\t    <img src=\"assets/logo-dte.png\" alt=\"logo-dte\">\n\t\t  </div>\n\t\t  <div>\n\t\t    <img src=\"assets/logo-ba.png\" alt=\"logo-ba\"> \n\t\t  </div>\n\t\t</div>\n\t</div>\n</div>\n"
+module.exports = "<rd-container container-fluid>\n\t\t<div class=\"footer-content\" layout=\"row\" layout-align=\"center center\" layout-xs=\"column\">\n\t\t  <div flex></div>\n\t\t  <div>\n\t\t    <img src=\"assets/logo-dte.png\" alt=\"logo-dte\">\n\t\t  </div>\n\t\t  <div>\n\t\t    <img src=\"assets/logo-ba.png\" alt=\"logo-ba\"> \n\t\t  </div>\n\t\t</div>\n</rd-container>\n"
 
 /***/ }),
 /* 16 */
@@ -550,7 +550,7 @@ exports.default = angular.module('rondaDocs.sitemap', []).component('sitemap', {
 /* 17 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ronda-container sitemap\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"sitemap-content\" layout=\"row\" layout-align=\"start center\" layout-xs=\"column\">\n\t\t  <div class=\"ronda-logo-sitemap\">\n\t\t    <object data=\"assets/ronda-logo-footer.svg\" type=\"image/svg+xml\"></object>\n\t\t  </div>\n\t\t  <span class=\"sitemap-link\">Qué es Ronda</span>\n\t\t  <span class=\"sitemap-link\">Guía de uso</span>\n\t\t  <span class=\"sitemap-link\">Contacto</span>\n\t\t  <span class=\"sitemap-link\">Créditos</span>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<rd-container class=\"sitemap\" container-fluid>\n\t<div class=\"sitemap-content\" layout=\"row\" layout-align=\"start center\" layout-xs=\"column\">\n\t  <div class=\"ronda-logo-sitemap\">\n\t    <object data=\"assets/ronda-logo-footer.svg\" type=\"image/svg+xml\"></object>\n\t  </div>\n\t  <span class=\"sitemap-link\">Qué es Ronda</span>\n\t  <span class=\"sitemap-link\">Guía de uso</span>\n\t  <span class=\"sitemap-link\">Contacto</span>\n\t  <span class=\"sitemap-link\">Créditos</span>\n\t</div>\n</rd-container>"
 
 /***/ })
 /******/ ]);
