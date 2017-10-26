@@ -232,7 +232,7 @@ button.bordered {
 .color-actividades {
   color: #7e57c2; }
 
-.color-herramienta {
+.color-herramientas {
   color: #26c6da; }
 
 .color-orientaciones {
@@ -247,7 +247,7 @@ button.bordered {
 .bg-actividades {
   background-color: #7e57c2; }
 
-.bg-herramienta {
+.bg-herramientas {
   background-color: #26c6da; }
 
 .bg-orientaciones {
@@ -258,76 +258,65 @@ button.bordered {
 
 /* inject:scss */
 .rd-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   padding-right: 80;
   padding-left: 80; }
 
 .rd-container-fluid {
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   padding-right: 24;
   padding-left: 24; }
 
 .rd-container-fluid-gt-xs {
-  display: flex;
-  flex-wrap: wrap;
+  display: block;
   padding-right: 24;
   padding-left: 24; }
 
 @media (max-width: 575px) {
   .rd-container-fluid-xs {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
 @media (min-width: 576px) {
   .rd-container-fluid-gt-sm {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
 @media (max-width: 767px) {
   .rd-container-fluid-sm {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
 @media (min-width: 768px) {
   .rd-container-fluid-gt-md {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
 @media (max-width: 991px) {
   .rd-container-fluid-md {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
 @media (min-width: 992px) {
   .rd-container-fluid-gt-lg {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
 @media (max-width: 1199px) {
   .rd-container-fluid-lg {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
 @media (min-width: 1200px) {
   .rd-container-fluid-gt-xl {
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     padding-right: 24;
     padding-left: 24; } }
 
@@ -339,6 +328,8 @@ button.bordered {
   top: 0px;
   display: block; }
   .rd-navbar .rd-navbar-content {
+    display: flex;
+    flex-wrap: wrap;
     z-index: 10000;
     height: 80px;
     line-height: 80px;
@@ -471,13 +462,13 @@ button.bordered {
 .rd-navbar-items-dropdown .rd-navbar-item[rd-section="actividades"].selected .rd-navbar-item-icon {
   color: #7e57c2; }
 
-.rd-navbar-items-horizontal .rd-navbar-item[data-rd-section="herramienta"]:hover .rd-navbar-item-icon, .rd-navbar-items-horizontal .rd-navbar-item[data-rd-section="herramienta"].selected .rd-navbar-item-icon,
-.rd-navbar-items-horizontal .rd-navbar-item[rd-section="herramienta"]:hover .rd-navbar-item-icon,
-.rd-navbar-items-horizontal .rd-navbar-item[rd-section="herramienta"].selected .rd-navbar-item-icon,
-.rd-navbar-items-dropdown .rd-navbar-item[data-rd-section="herramienta"]:hover .rd-navbar-item-icon,
-.rd-navbar-items-dropdown .rd-navbar-item[data-rd-section="herramienta"].selected .rd-navbar-item-icon,
-.rd-navbar-items-dropdown .rd-navbar-item[rd-section="herramienta"]:hover .rd-navbar-item-icon,
-.rd-navbar-items-dropdown .rd-navbar-item[rd-section="herramienta"].selected .rd-navbar-item-icon {
+.rd-navbar-items-horizontal .rd-navbar-item[data-rd-section="herramientas"]:hover .rd-navbar-item-icon, .rd-navbar-items-horizontal .rd-navbar-item[data-rd-section="herramientas"].selected .rd-navbar-item-icon,
+.rd-navbar-items-horizontal .rd-navbar-item[rd-section="herramientas"]:hover .rd-navbar-item-icon,
+.rd-navbar-items-horizontal .rd-navbar-item[rd-section="herramientas"].selected .rd-navbar-item-icon,
+.rd-navbar-items-dropdown .rd-navbar-item[data-rd-section="herramientas"]:hover .rd-navbar-item-icon,
+.rd-navbar-items-dropdown .rd-navbar-item[data-rd-section="herramientas"].selected .rd-navbar-item-icon,
+.rd-navbar-items-dropdown .rd-navbar-item[rd-section="herramientas"]:hover .rd-navbar-item-icon,
+.rd-navbar-items-dropdown .rd-navbar-item[rd-section="herramientas"].selected .rd-navbar-item-icon {
   color: #26c6da; }
 
 .rd-navbar-items-horizontal .rd-navbar-item[data-rd-section="orientaciones"]:hover .rd-navbar-item-icon, .rd-navbar-items-horizontal .rd-navbar-item[data-rd-section="orientaciones"].selected .rd-navbar-item-icon,

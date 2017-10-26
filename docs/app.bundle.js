@@ -320,7 +320,7 @@ function routes($stateProvider) {
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ronda-section-toolbar\" data-section=\"actividades\"></div>\n<div class=\"ronda-banner banner-sample\" layout=\"row\" layout-align=\"center start\" \n\t\t data-section=\"actividades\">\n\t<div flex=\"60\" layout=\"column\">\n\t\t<div></div>\n\t\t<div flex>\n\t\t\t<h1 class=\"headpost title\">Ronda UI</h1>\n\t\t\t<p class=\"headpost\">Ronda UI es un conjunto de componentes diseñados y desarrollados por el equipo de la <a href=\"http://dte.abc.gov.ar/\">Dirección de Tecnología Educativa de la Provincia de Buenos Aires</a> para el proyecto de contenidos digitales con fines educativos <a href=\"https://www.github.com/Dte-ba/ronda\"><strong>Ronda</strong></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"ronda-container\">\n\t<div class=\"ronda-content\">\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/typography.html'\"></div>\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/icons.html'\"></div>\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/colors.html'\"></div>\n\n\t\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/buttons.html'\"></div>\n\n\t</div>\n</div>\n\n"
+module.exports = "<div class=\"ronda-section-toolbar\" data-section=\"actividades\"></div>\n<div class=\"ronda-banner banner-sample\" layout=\"row\" layout-align=\"center start\" \n\t\t data-section=\"actividades\">\n\t<div flex=\"60\" layout=\"column\">\n\t\t<div></div>\n\t\t<div flex>\n\t\t\t<h1 class=\"headpost title\">Ronda UI</h1>\n\t\t\t<p class=\"headpost\">Ronda UI es un conjunto de componentes diseñados y desarrollados por el equipo de la <a href=\"http://dte.abc.gov.ar/\">Dirección de Tecnología Educativa de la Provincia de Buenos Aires</a> para el proyecto de contenidos digitales con fines educativos <a href=\"https://www.github.com/Dte-ba/ronda\"><strong>Ronda</strong></a></p>\n\t\t</div>\n\t</div>\n</div>\n\n<rd-container container-fluid=\"xs sm\">\n\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/typography.html'\"></div>\n\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/icons.html'\"></div>\n\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/colors.html'\"></div>\n\t<div class=\"docs-section\" ng-include=\"'docs/app/main/sections/buttons.html'\"></div>\n</rd-container>\n\n"
 
 /***/ }),
 /* 9 */
@@ -436,22 +436,24 @@ var NavbarComponent = exports.NavbarComponent = function () {
     _classCallCheck(this, NavbarComponent);
 
     this.currentSection = 'actividades';
+
+    this.selected = 'actividades';
+
+    this.navbarItems = [{ section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuesta didáctica' }, { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' }, { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' }, { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' }, { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }];
   }
 
   _createClass(NavbarComponent, [{
-    key: '$onInit',
-    value: function $onInit() {}
-  }, {
-    key: 'toggleSection',
-    value: function toggleSection(section) {
-      if (this.currentSection === section) {
+    key: 'itemClicked',
+    value: function itemClicked(item) {
+      if (this.selected === item.section) {
         return;
       }
-      this.currentSection = section;
-      (0, _jquery2.default)('.ronda-banner, .ronda-section-toolbar').attr('data-section', section);
-      (0, _jquery2.default)('.navbar-button').removeClass('selected');
-      (0, _jquery2.default)('.navbar-button[data-section="' + section + '"]').addClass('selected');
+      this.selected = item.section;
+      (0, _jquery2.default)('.ronda-banner, .ronda-section-toolbar').attr('data-section', item.section);
     }
+  }, {
+    key: '$onInit',
+    value: function $onInit() {}
   }]);
 
   return NavbarComponent;
@@ -466,7 +468,7 @@ exports.default = angular.module('rondaDocs.navbar', []).component('navbar', {
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar-content\" md-whiteframe=\"4\">\n\t<div layout=\"row\">\n\t\t<div class=\"button-bars-container\" layout=\"row\">\n\t\t\t<md-button class=\"nav-menu-button md-icon-button grey-color\" aria-label=\"Menu\">\n        <md-icon md-font-icon=\"fa-bars\" class=\"fa fa-2x\"></md-icon>\n      </md-button>\n\t\t</div>\n\t\t<div class=\"brand-logo\">\n\t\t\t<object data=\"assets/ronda-logo.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t\t<div class=\"brand-logo-scrolled\">\n\t\t\t<object data=\"assets/ronda-logo-header.svg\" type=\"image/svg+xml\"></object>\n\t\t</div>\n\t\t<div flex class=\"navbar-buttons\" layout=\"row\" layout-align=\"center center\">\n\t\t\t<div ng-click=\"$ctrl.toggleSection('propuestas')\" class=\"navbar-button\" data-section=\"propuestas\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-propuestas ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Propuesta didáctica</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('actividades')\" class=\"navbar-button selected\" data-section=\"actividades\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-actividades ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Actividades</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('herramientas')\" class=\"navbar-button\" data-section=\"herramientas\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-herramienta ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Herramientas</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('orientaciones')\" class=\"navbar-button\" data-section=\"orientaciones\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-orientaciones ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Orientaciones</span>\n\t\t\t</div>\n\t\t\t<div ng-click=\"$ctrl.toggleSection('mediateca')\" class=\"navbar-button\" data-section=\"mediateca\">\n\t\t\t\t<span class=\"navbar-button-icon ri ri-mediateca ri-3x\"></span>\n\t\t\t\t<span class=\"navbar-button-text rd-caption\">Mediateca</span>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"navbar-actions\">\n\t\t\t\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<rd-navbar logo=\"assets/ronda-logo.svg\" logo-scrolled=\"assets/ronda-logo-header.svg\">\n\t<rd-navbar-items>\n\t\t<rd-navbar-item \n\t\t\tng-repeat=\"item in $ctrl.navbarItems\" \n\t\t\tng-model=\"item\" \n\t\t\tnavbar-item-selected=\"item.section === $ctrl.selected\"\n\t\t\tng-click=\"$ctrl.itemClicked(item)\"/>\n\t</rd-navbar-items>\n\t<rd-navbar-tools>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-lupa\" navbar-item-selected=\"true\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"mi mi-home\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-mochila\"/>\n\t</rd-navbar-tools>\n</rd-navbar>"
 
 /***/ }),
 /* 14 */

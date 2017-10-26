@@ -37,6 +37,8 @@
   display: block;
 
   .rd-navbar-content {
+		display: flex;
+  	flex-wrap: wrap;
   	z-index: $navbar-z-index;
 		height: $navbar-height;
 		line-height: $navbar-height;
