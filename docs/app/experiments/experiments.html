@@ -1,29 +1,12 @@
-
-<rd-navbar logo="assets/ronda-logo.svg" logo-scrolled="assets/ronda-logo-header.svg">
-	<rd-navbar-items>
-		<rd-navbar-item 
-			ng-repeat="item in $ctrl.navbarItems" 
-			ng-model="item" 
-			navbar-item-selected="item.section === $ctrl.selected"
-			ng-click="$ctrl.itemClicked(item)"/>
-	</rd-navbar-items>
-	<rd-navbar-tools>
-		<rd-navbar-item navbar-item-icon="ri ri-lupa" navbar-item-selected="true"/>
-		<rd-navbar-item navbar-item-icon="mi mi-home"/>
-		<rd-navbar-item navbar-item-icon="ri ri-mochila"/>
-	</rd-navbar-tools>
-</rd-navbar>
-
-<rd-container>
-	some content here
+<!--
+	<rd-container container-fluid="xs sm md">
+	<rd-waterfall columns="3" columns-xs="1" columns-sm="2" columns-md="3">
+		<rd-item-template ng-click="$ctrl.itemClicked(item)">
+			<div ng-style="{'background-color': item.color}" >{{item.id}}</div>
+			
+		</rd-item-template>
+	</rd-waterfall>
 </rd-container>
+-->
 
-<rd-container container-fluid>
-	some content here
-</rd-container>
-
-<rd-container container-fluid="gt-md gt-xl">
-	some content here
-</rd-container>
-
-<div style="height: 500px"></div>
+<div style="height: 600px"></div>

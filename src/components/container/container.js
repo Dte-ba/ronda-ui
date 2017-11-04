@@ -9,14 +9,12 @@ class RdContentController {
 	/*@ngInject*/
 	constructor($scope, $element){
 		this.$scope = $scope;
-    this.$element = $element;
+		this.$element = $element;
 
-    this.$element.addClass('rd-container');
-
-    let fluid = this.$scope.containerFluid || '';
+		let fluid = this.$scope.containerFluid || '';
 		let isFluid = this.$scope.containerFluid !== undefined;
 
-		let cls = '';
+		let cls = 'rd-container';
 
 		if (isFluid){
 			fluid = fluid.trim();
@@ -40,8 +38,10 @@ function RdContainer(){
 	return {
 		restrict: 'E',
 		controller: RdContentController,
+		transclude: true,
 		scope: {
 			containerFluid: '@containerFluid'
-		}
+		},
+		template: '<div class="rd-container__content" ng-transclude></div>'
 	}
 }

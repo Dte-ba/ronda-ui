@@ -1,22 +1,33 @@
 .rd-container {
-	@include make-container($container-gutter);
+	display: block;
+
+	& > &__content {
+		margin: 0 auto;
+		width: calc(100% - #{$container-gutter});
+	}
 }
 
 .rd-container-fluid {
-	@include make-container($container-gutter-fluid);
+	display: block;
+
+	& > .rd-container__content {
+		margin: 0 auto;
+		width: calc((100% - #{$container-gutter-fluid}));
+	}
 }
+
 
 @each $key in $breakpoints {
 	@include media-breakpoint-up($key) { 
 		.rd-container-fluid-gt-#{$key} {
-			@include make-container($container-gutter-fluid);
+			width: calc((100% - #{$container-gutter-fluid}));
 		}
 	}
 
 	@include media-breakpoint-down($key) { 
 		@if $key != 'xl' { 
 			.rd-container-fluid-#{$key} {
-				@include make-container($container-gutter-fluid);
+				width: calc((100% - #{$container-gutter-fluid}));
 			}
 		}
 	}

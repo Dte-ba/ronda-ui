@@ -16,13 +16,16 @@ class RdNavbarController {
     this.$element = $element;
     this.$timeout = $timeout;
 
-    this.$element.addClass('rd-navbar');
+		this.logo = $scope.logo;
+		this.logoScrolled = $scope.logoScrolled;
+
+    this.$element.addClass('rd-navbar md-whiteframe-4dp');
 
     this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
-    	this.$scope.isMobile = mobile === true;
+    	this.isMobile = mobile === true;
     });
 
-    let clsScrolled = 'rd-scrolled';
+    let clsScrolled = 'rd-navbar--scrolled';
 
     $(document).ready(() => {
 		  var scrollTop = 0;
@@ -43,19 +46,19 @@ class RdNavbarController {
 		});
 
 		// the dropdown
-		this.$scope.dropdownOpened = false;
-		this.$scope.toggleDropdown = ($event) => {
-			this.$scope.dropdownOpened = !this.$scope.dropdownOpened;
+		this.dropdownOpened = false;
+		this.toggleDropdown = ($event) => {
+			this.dropdownOpened = !this.dropdownOpened;
 			$event.stopPropagation();
 		};
 	}
 
 	removeDropdown(){
 		// remove the dropdown
-    if (this.$scope.dropdownOpened) {
-    	this.$scope.dropdownOpened = false;
+    if (this.dropdownOpened) {
+    	this.dropdownOpened = false;
     	this.$timeout(() => {
-    		this.$scope.$apply();
+    		this.$apply();
     	});
     }
 	}
@@ -67,12 +70,13 @@ function RdNavbar($window){
 	return {
 		restrict: 'E',
 		controller: RdNavbarController,
+		controllerAs: '$rdNavbarController',
 		scope: {
 			logo: '@logo',
 			logoScrolled: '@logoScrolled'
 		},
 		transclude: {
-			'items': 'rdNavbarItems',
+			'items': 'rdNavbarNavigation',
 			'tools': 'rdNavbarTools',
 			'body': '?rdNavbarBody'
 		},

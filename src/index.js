@@ -9,12 +9,14 @@ import { rondaConfig } from './config';
 import container from './components/container/container';
 import navbar from './components/navbar/navbar';
 import navbarItem from './components/navbarItem/navbar-item';
+import waterfall from './components/waterfall/waterfall';
 
 let includes = [
 	'ngMaterial',
 	container,
 	navbar,
-	navbarItem
+	navbarItem,
+	waterfall
 ];
 
 export default angular

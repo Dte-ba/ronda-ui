@@ -4,22 +4,13 @@ import routing from './experiments.routes';
 export class ExperimentsController {
 
   /*@ngInject*/
-  constructor($http) {
+  constructor($http, $element) {
     this.$http = $http;
-
-    this.selected = 'propuestas';
-
-    this.navbarItems = [
-      { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuesta didáctica' },
-      { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
-      { section: 'herramienta', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-      { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
-      { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
-    ];
+    $element.addClass('section-content');
   }
 
   itemClicked(item) {
-    this.selected = item.section;
+    console.log(item);
   }
 
   $onInit(){

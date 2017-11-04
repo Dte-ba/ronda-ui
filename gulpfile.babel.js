@@ -13,6 +13,7 @@ import fs from 'fs';
 import ejs from 'gulp-ejs';
 import path from 'path';
 import url from 'url';
+import postcss from 'gulp-postcss';
 
 var plugins = gulpLoadPlugins();
 var config;
@@ -79,12 +80,14 @@ gulp.task('inject:scss', () => {
 gulp.task('scss:dev', function () {
   return gulp.src('./scss/ronda-ui.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe( postcss([ require('precss'), require('autoprefixer') ]) )
     .pipe(gulp.dest('./build'));
 });
 
 gulp.task('scss:build', function () {
   return gulp.src('./scss/ronda-ui.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe( postcss([ require('precss'), require('autoprefixer') ]) )
     .pipe(rename({ basename: 'ronda-ui.min' }))
     .pipe(gulp.dest('./build'));
 });

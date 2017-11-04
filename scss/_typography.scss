@@ -1,4 +1,4 @@
-* {
+html {
 	font-family: Roboto;
 	font-weight: $roboto-regular;
 }
@@ -26,21 +26,21 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-.rd-caption {
+.rd__text--caption {
 	font-weight: $roboto-regular;
-	font-size: 12px;
+	font-size: 1.2rem;
 }
 
 // the headpost thing
-.headpost {
+.rd__headpost {
 	font-family: Dosis;
 
-	&.title {
+	&--title {
 		font-weight: $dosis-bold;
 		font-size: $font-size-headpost-title;
 	}
 
-	&.subtitle {
+	&--subtitle {
 		font-weight: $dosis-bold;
 		font-size: $font-size-headpost-subtitle;
 	}
@@ -50,9 +50,9 @@ h1, h2, h3, h4, h5, h6 {
 		text-decoration: none;
 		color: inherit;
 	}
-}
 
-p.headpost {
-	font-weight: $dosis-regular;
-	font-size: $font-size-headpost-p;
+	p.#{&} {
+		font-weight: $dosis-regular;
+		font-size: $font-size-headpost-p;
+	}
 }

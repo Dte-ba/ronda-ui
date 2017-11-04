@@ -1,12 +1,32 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Inconsolata);
+*
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body, html {
+  height: auto;
+  display: table;
+  min-width: 100%; }
+
 body {
-  padding-top: 80px; }
+  font-size: 1.6rem;
+  box-sizing: border-box; }
 
 *:focus {
   outline: none; }
 
-.main-container {
-  padding-bottom: 50px; }
+.main-content {
+  position: relative;
+  padding-top: 100px; }
+
+.section-content {
+  display: block; }
 
 .hljs {
   font-family: Inconsolata,Monaco,Consolas,"Liberation Mono","Courier New",monospace; }
@@ -35,28 +55,11 @@ code.hljs-inline {
   background-color: #f8f9fa;
   border-radius: .25rem; }
 
-.clearfix:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0; }
-
-.clearfix {
-  display: inline-block; }
-
 .text-center {
   text-align: center; }
 
 .buttondemos .label {
   opacity: 0.54; }
-
-html[xmlns] .clearfix {
-  display: block; }
-
-* html .clearfix {
-  height: 1%; }
 
 ul.ronda-icons-list {
   padding-left: 0;
@@ -76,29 +79,32 @@ ul.ronda-icons-list {
   text-align: center;
   word-wrap: break-word; }
 
-/**
+/***********************************************
  * PATHS
  */
-/**
+/***********************************************
  * CORE
  */
-/**
+/***********************************************
  * LAYOUT
  */
-/**
+/***********************************************
  * COLORS
  */
-/**
+/***********************************************
  * SECTIONS
  */
-/**
+/*
  * Navbar
  */
-/**
+/***********************************************
  * FONTS
  */
-/**
- * FONTS SIZES
+/***********************************************
+ * TRNASITIONS
+ */
+/***********************************************
+ * MATERIAL STUFF
  */
 .ronda-banner {
   color: white; }
@@ -269,6 +275,9 @@ footer {
   width: 100%; }
   footer .footer-content {
     height: 60px; }
+
+sitemap {
+  display: block; }
 
 .sitemap {
   background-color: #303030; }

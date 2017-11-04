@@ -1,13 +1,17 @@
 
 // import the styles
-@import '_variables.scss';
-@import './mixins/mixins.scss';
-@import '_core.scss';
-@import '_animations.scss';
-@import '_layout';
-@import '_fonts.scss';
-@import '_typography.scss';
-@import '_icons.scss';
-@import '_buttons.scss';
-@import '_sections.scss';
-@import '_components.scss';
+@import 'variables';
+@import 'mixins/mixins';
+@import 'core';
+@import 'animations';
+//@import '_layout';
+@import 'fonts';
+@import 'typography';
+@import 'icons';
+//@import '_buttons.scss';
+//@import '_sections.scss';
+//@import '_components.scss';
+
+// temporal
+@import '../src/components/navbar/navbar';
+@import '../src/components/navbarItem/navbar-item';

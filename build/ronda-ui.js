@@ -102,12 +102,16 @@ var _navbarItem = __webpack_require__(8);
 
 var _navbarItem2 = _interopRequireDefault(_navbarItem);
 
+var _waterfall = __webpack_require__(10);
+
+var _waterfall2 = _interopRequireDefault(_waterfall);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// configs
-var includes = ['ngMaterial', _container2.default, _navbar2.default, _navbarItem2.default];
-
 // components
+var includes = ['ngMaterial', _container2.default, _navbar2.default, _navbarItem2.default, _waterfall2.default];
+
+// configs
 exports.default = _angular2.default.module('ronda-ui', includes).config(_config.rondaConfig).name;
 
 /***/ }),
@@ -304,12 +308,10 @@ function RdContentController($scope, $element) {
 	this.$scope = $scope;
 	this.$element = $element;
 
-	this.$element.addClass('rd-container');
-
 	var fluid = this.$scope.containerFluid || '';
 	var isFluid = this.$scope.containerFluid !== undefined;
 
-	var cls = '';
+	var cls = 'rd-container';
 
 	if (isFluid) {
 		fluid = fluid.trim();
@@ -336,9 +338,11 @@ function RdContainer() {
 	return {
 		restrict: 'E',
 		controller: RdContentController,
+		transclude: true,
 		scope: {
 			containerFluid: '@containerFluid'
-		}
+		},
+		template: '<div class="rd-container__content" ng-transclude></div>'
 	};
 }
 
@@ -382,15 +386,18 @@ var RdNavbarController = function () {
 		this.$element = $element;
 		this.$timeout = $timeout;
 
-		this.$element.addClass('rd-navbar');
+		this.logo = $scope.logo;
+		this.logoScrolled = $scope.logoScrolled;
+
+		this.$element.addClass('rd-navbar md-whiteframe-4dp');
 
 		this.$scope.$watch(function () {
 			return $mdMedia('xs') || $mdMedia('sm');
 		}, function (mobile) {
-			_this.$scope.isMobile = mobile === true;
+			_this.isMobile = mobile === true;
 		});
 
-		var clsScrolled = 'rd-scrolled';
+		var clsScrolled = 'rd-navbar--scrolled';
 
 		(0, _jquery2.default)(document).ready(function () {
 			var scrollTop = 0;
@@ -411,9 +418,9 @@ var RdNavbarController = function () {
 		});
 
 		// the dropdown
-		this.$scope.dropdownOpened = false;
-		this.$scope.toggleDropdown = function ($event) {
-			_this.$scope.dropdownOpened = !_this.$scope.dropdownOpened;
+		this.dropdownOpened = false;
+		this.toggleDropdown = function ($event) {
+			_this.dropdownOpened = !_this.dropdownOpened;
 			$event.stopPropagation();
 		};
 	}
@@ -424,10 +431,10 @@ var RdNavbarController = function () {
 			var _this2 = this;
 
 			// remove the dropdown
-			if (this.$scope.dropdownOpened) {
-				this.$scope.dropdownOpened = false;
+			if (this.dropdownOpened) {
+				this.dropdownOpened = false;
 				this.$timeout(function () {
-					_this2.$scope.$apply();
+					_this2.$apply();
 				});
 			}
 		}
@@ -442,12 +449,13 @@ function RdNavbar($window) {
 	return {
 		restrict: 'E',
 		controller: RdNavbarController,
+		controllerAs: '$rdNavbarController',
 		scope: {
 			logo: '@logo',
 			logoScrolled: '@logoScrolled'
 		},
 		transclude: {
-			'items': 'rdNavbarItems',
+			'items': 'rdNavbarNavigation',
 			'tools': 'rdNavbarTools',
 			'body': '?rdNavbarBody'
 		},
@@ -465,7 +473,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<rd-container container-fluid class=\"rd-navbar-content\" layout=\"row\" ng-class=\"{ 'rd-navbar-mobile': isMobile }\" data-sm=\"{{isMobile}}\" md-whiteframe=\"4\">\n\t<div class=\"rd-menu-button-container\" layout=\"row\" layout-align=\"start center\">\n\t\t<md-button class=\"rd-menu-button md-icon-button grey-color\" aria-label=\"Menu\" ng-click=\"toggleDropdown($event)\">\n      <md-icon>menu</md-icon>\n    </md-button>\n\t</div>\n\t<div class=\"rd-navbar-brand\">\n\t\t<div class=\"rd-brand-logo\">\n\t\t\t<img ng-src=\"{{logo}}\" alt=\"Logo\">\n\t\t</div>\n\t\t<div class=\"rd-brand-logo-scrolled\">\n\t\t\t<img ng-src=\"{{logoScrolled}}\" alt=\"Logo\">\n\t\t</div>\n\t</div>\n\t<div flex class=\"rd-navbar-body\" ng-transclude=\"body\" ng-hide=\"isMobile\"></div>\n\t<div flex class=\"rd-navbar-items rd-navbar-items-horizontal\" ng-transclude=\"items\" layout=\"row\" layout-align=\"center center\"></div>\n\t<div flex-sm flex-xs class=\"rd-navbar-items-tools\" ng-transclude=\"tools\" layout=\"row\" layout-align=\"end center\"></div>\n</rd-container>\n<div flex class=\"rd-navbar-dropdown rd-navbar-items-dropdown\" ng-transclude=\"items\" md-whiteframe=\"2\" ng-show=\"dropdownOpened\"></div>"
+module.exports = "<div class=\"rd-navbar__content\"\n\t\t layout=\"row\"\n\t\t ng-class=\"{ 'rd-navbar--mobile': $rdNavbarController.isMobile }\">\n\t\n\t<!-- MENU BUTTON -->\n\t<md-button class=\"rd-navbar__menu-button\" aria-label=\"Menu\" ng-click=\"$rdNavbarController.toggleDropdown($event)\">\n\t\t<span class=\"rd-navbar__menu-button--bars\"></span>\n\t</md-button>\n\n\t<!-- BRAND-->\n\t<a href=\"#\" class=\"rd-navbar__brand\" aria-label=\"Ir al home\">\n\t\t<img class=\"rd-navbar__logo\" ng-src=\"{{$rdNavbarController.logo}}\" alt=\"Logo\">\n\t\t<img class=\"rd-navbar__logo--scrolled\" ng-src=\"{{$rdNavbarController.logoScrolled}}\" alt=\"Logo\">\n\t</a>\n\t\n\t<!-- HORIZONTAL NAVIGATION -->\n\t<nav class=\"rd-navbar__nav--navigation\" ng-transclude=\"items\" role=\"navigation\">\n\t</nav>\n\n\t<!-- TOOLS -->\n\t<div class=\"rd-navbar__tools\" ng-transclude=\"tools\"></div>\n</div>"
 
 /***/ }),
 /* 8 */
@@ -497,21 +505,26 @@ function RdNavbarItemController($scope, $element) {
 	var m = this.$scope.ngModel;
 	if (m && (typeof m === 'undefined' ? 'undefined' : _typeof(m)) === 'object') {
 		//replace the scope;
-		this.$scope.icon = m.icon;
-		this.$scope.caption = m.caption;
-		this.$scope.section = m.section;
+		this.icon = m.icon;
+		this.caption = m.caption;
+		this.section = m.section;
+	} else {
+		this.icon = this.$scope.icon;
+		this.caption = this.$scope.caption;
 	}
 
-	this.$element.addClass('rd-navbar-item');
-	this.$element.attr('data-rd-section', this.$scope.section);
+	this.$element.addClass('rd-navbar__item');
+	this.$element.attr('data-rd-section', this.section);
+
+	this.$element.attr('role', 'menuitem');
 
 	this.$scope.$watch(function () {
 		return _this.$scope.selected;
 	}, function (value) {
 		if (value) {
-			_this.$element.addClass('selected');
+			_this.$element.addClass('rd-navbar__item--selected');
 		} else {
-			_this.$element.removeClass('selected');
+			_this.$element.removeClass('rd-navbar__item--selected');
 		}
 	});
 };
@@ -526,6 +539,7 @@ function RdContainer() {
 	return {
 		restrict: 'E',
 		controller: RdNavbarItemController,
+		controllerAs: '$rdNavbarItemCtrl',
 		scope: {
 			icon: '@navbarItemIcon',
 			caption: '@navbarItemCaption',
@@ -541,7 +555,198 @@ function RdContainer() {
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "<span class=\"rd-navbar-item-icon\" ng-class=\"icon\"></span>\n<span class=\"rd-navbar-item-caption rd-caption\">{{caption}}</span>"
+module.exports = "<span class=\"rd-navbar__item--icon\" ng-class=\"$rdNavbarItemCtrl.icon\"></span>\n<span class=\"rd-navbar__item--caption rd__text--caption\">{{$rdNavbarItemCtrl.caption}}</span>"
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+exports.default = angular.module('ronda-ui.components.waterfall', []).directive('rdWaterfall', rdWaterfall).name;
+
+
+var DEFAULT_COLUMNS_SIZE = 5;
+
+var RdWaterfallController = function () {
+	RdWaterfallController.$inject = ['$scope', '$element', '$timeout', '$compile', '$attrs', '$transclude', '$mdMedia', '$window'];
+
+	/*@ngInject*/
+	function RdWaterfallController($scope, $element, $timeout, $compile, $attrs, $transclude, $mdMedia, $window) {
+		_classCallCheck(this, RdWaterfallController);
+
+		this.$scope = $scope;
+		this.$element = $element;
+		this.$timeout = $timeout;
+		this.$attrs = $attrs;
+		this.$compile = $compile;
+		this.$transclude = $transclude;
+		this.$window = $window;
+		this.$mdMedia = $mdMedia;
+		this.$wrapperElement = this.$element.find('.rd-waterfall-wrapper');
+		this.$columns = [];
+		this.$templ = angular.element(this.$attrs.itemTemplate);
+		this.columnsSizes = {};
+		this.lastColumn_ = null;
+		this.items = [];
+
+		this.$element.addClass('rd-waterfall');
+		this.initColumnsSizes_();
+
+		// init
+		for (var i = 0; i < 15; i++) {
+			this.items.push({ id: i, color: this.randomColor() });
+		}
+		var counter = this.items.length;
+		//setInterval(() => {
+		//	this.items.push(counter++);
+		//	this.$scope.$apply();
+		//}, 3000);
+	}
+
+	_createClass(RdWaterfallController, [{
+		key: 'initColumnsSizes_',
+		value: function initColumnsSizes_() {
+			var _this = this;
+
+			// init breakpoints
+			var abks = {};
+			for (var aname in this.$attrs.$attr) {
+				var htag = this.$attrs.$attr[aname];
+				if (/^columns\-?/i.test(htag)) {
+					abks[htag] = this.$attrs[aname];
+				}
+			}
+			this.columnsSizes['columns'] = parseInt(abks['columns']) || DEFAULT_COLUMNS_SIZE;
+			var bks = ["xs", "sm", "md", "lg", "xl"];
+
+			bks.forEach(function (b) {
+				if (abks['columns-' + b]) {
+					_this.columnsSizes[b] = parseInt(abks['columns-' + b]) || _this.columnsSizes['columns'];
+				}
+				if (abks['columns-gt-' + b]) {
+					_this.columnsSizes['gt-' + b] = parseInt(abks['columns-gt-' + b]) || _this.columnsSizes['columns'];
+				}
+			});
+		}
+	}, {
+		key: 'columnSize_',
+		value: function columnSize_() {
+			for (var media in this.columnsSizes) {
+				if (this.$mdMedia(media)) return this.columnsSizes[media];
+			}
+			return this.columnsSizes['columns'];
+		}
+	}, {
+		key: 'render_',
+		value: function render_(force) {
+			var csize = this.columnSize_();
+			if (this.lastColumn_ === csize || this.rendering_ && !force) return;
+
+			console.log('rendering...');
+
+			this.rendering_ = true;
+			this.lastColumn_ = csize;
+			this.$wrapperElement.empty();
+			// create the columns
+			var flex = Math.floor(100 / csize);
+			for (var c = 0; c < this.columnSize_(); c++) {
+				this.$columns[c] = this.$compile(angular.element('<div layout="column" layout-align="start stretch" flex="' + flex + '"></div>'))(this.$scope);
+				this.$columns[c].$colIndex = c;
+				this.$wrapperElement.append(this.$columns[c]);
+			}
+
+			for (var i = 0; i < this.items.length; i++) {
+				var item = this.items[i];
+				item.$index = i;
+				item.$colIndex = i % this.columnSize_();
+				var childScope = this.$scope.$new(false);
+				childScope.item = item;
+				var clone = this.$templ.clone();
+				//
+				var h = Math.floor(Math.random() * 200 + 30);
+				//let lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+				//clone.append(`${lorem}`);
+				if (this.$templ[0].srcHTML) {
+					clone[0].innerHTML = this.$templ[0].srcHTML;
+				}
+				var el = this.$compile(clone)(childScope);
+				this.$columns[item.$colIndex].append(el);
+			}
+
+			this.rendering_ = false;
+		}
+	}, {
+		key: '$onInit',
+		value: function $onInit() {
+			var _this2 = this;
+
+			this.render_();
+
+			$(this.$window).resize(function () {
+				_this2.render_();
+			});
+		}
+	}, {
+		key: 'loadingIsVisible',
+		value: function loadingIsVisible() {
+			return this.rendering_;
+		}
+	}, {
+		key: 'randomColor',
+		value: function randomColor() {
+			return ('00000' + (Math.random() * (1 << 24) | 0).toString(16)).slice(-6);
+		}
+	}]);
+
+	return RdWaterfallController;
+}();
+
+function rdWaterfall() {
+	'ngInject';
+
+	return {
+		restrict: 'E',
+		controllerAs: '$rdWaterfallCtrl',
+		controller: RdWaterfallController,
+		template: function template(element, attr) {
+			attr.itemTemplate = getItemTemplate();
+			return '\n\t\t\t\t<md-progress-linear class="\'md-inline\'" ng-if="$rdWaterfallCtrl.loadingIsVisible()" md-mode="indeterminate"></md-progress-linear>\n\t\t\t\t<div class="rd-waterfall-wrapper" layout="row" layout-padding></div>';
+
+			// helpers
+			function getItemTemplate() {
+				var templateTag = element.find('rd-item-template').detach(),
+				    html = templateTag.length ? templateTag.html() : element.html();
+				var $templ = angular.element('<div class="rd-waterfall-item">' + html + '</rd-waterfall-item>');
+				// copy attributes
+				if (templateTag.length) {
+					var $templOne = templateTag[0];
+
+					for (var i = 0; i < $templOne.attributes.length; i++) {
+						var a = $templOne.attributes[i];
+						if (/class/i.test(a.name)) {
+							$templ.addClass(a.value);
+						} else {
+							$templ.attr(a.name, a.value);
+						}
+					}
+				}
+
+				if (!templateTag.length) element.empty();
+				return $templ;
+			}
+		}
+	};
+}
 
 /***/ })
 /******/ ]);

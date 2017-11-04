@@ -1,7 +1,26 @@
 @import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Inconsolata);
 
+*
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body, html {
+  height: auto;
+  display: table;
+  min-width: 100%;
+}
+
 body {
-  padding-top: 80px;
+  font-size: 1.6rem;
+  box-sizing: border-box;
 }
 
 *:focus {
@@ -9,8 +28,13 @@ body {
 }
 
 
-.main-container {
-  padding-bottom: 50px;
+.main-content {
+  position: relative;
+  padding-top: 100px;
+}
+
+.section-content {
+  display: block;
 }
 
 .hljs {
@@ -48,19 +72,6 @@ code.hljs-inline {
   border-radius: .25rem;
 }
 
-.clearfix:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-}
-
-.clearfix {
-  display: inline-block;
-}
-
 .text-center {
   text-align: center;
 }
@@ -69,13 +80,6 @@ code.hljs-inline {
   opacity: 0.54;
 }
 
-html[xmlns] .clearfix {
-   display: block;
-}
-
-* html .clearfix {
-   height: 1%;
-}
 ul.ronda-icons-list {
   padding-left: 0;
   list-style: none;

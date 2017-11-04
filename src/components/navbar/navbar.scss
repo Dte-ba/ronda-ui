@@ -1,112 +1,200 @@
-@mixin navbar-scrolled(){
-	.rd-brand-logo {
-		display: none;
-	}
-
-	.rd-brand-logo-scrolled {
-		display: block;
-	}
-
-	.navbar-buttons {
-		display: none;
-	}
-
-	.rd-menu-button {
-		visibility: visible;
-	}
-
-	.rd-navbar-items {
-		display: none;
-	}
-
-	.rd-navbar-body {
-		display: block;
-	}
-}
-
-@mixin navbar-mobile(){
-	@include navbar-scrolled();
-}
-
 .rd-navbar {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
 	min-width: $screen-min-width;
 	z-index: $navbar-z-index;
-  width: 100%;
-  position: fixed;
-  top: 0px;
-  display: block;
+	background-color: $navbar-background-color;
 
-  .rd-navbar-content {
+	&__content {
 		display: flex;
-  	flex-wrap: wrap;
-  	z-index: $navbar-z-index;
+		align-items: center;
 		height: $navbar-height;
 		line-height: $navbar-height;
-		background-color: $navbar-background-color;
-		@include height-transition();
-
-  	&.rd-navbar-mobile {
-  		height: $navbar-scrolled-height !important;
-	  	line-height: $navbar-scrolled-height !important;	
-
-  		@include navbar-mobile();
-  	}
+		margin: 0 auto;
+		width: calc((100% - #{$container-gutter-fluid}));
+		transition: $transition-default;
 	}
 
-  .rd-navbar-items {
-		@include opacity-transition();
-	}
+	&__menu-button {
+		margin: 0 6px;
+    height: 50px;
+    min-width: 0;
+    padding: 13px;
+    width: 50px;
+		border-radius: 50%;
+		opacity: 1;
+		backface-visibility: hidden;
+		transition: $transition-default;
+				
+		&--bars {
+			display: inline-block;
+			position: relative;
+			width: 100%;
+			height: 3px;
+			background-color: $grey-color;
+			border-radius: 100px;
 
-	.rd-navbar-body {
-		display: none;
-		@include opacity-transition();
-	}
+			&::before {
+				content: '';
+				top: 8px;
+				left: 0;
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				background-color: $grey-color;
+				border-radius: inherit;
+			}
 
-	.rd-navbar-tools {
-		background: blue;
-	}
-
-	&.rd-scrolled {
-		.rd-navbar-content {
-			height: $navbar-scrolled-height !important;
-	  	line-height: $navbar-scrolled-height !important;	
+			&::after {
+				content: '';
+				top: -8px;
+				left: 0;
+				display: inline-block;
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				background-color: $grey-color;
+				border-radius: inherit;
+			}
 		}
-		@include navbar-scrolled();
+
+		&:hover {
+			box-shadow: $whiteframe-shadow-2dp;
+			background-color: transparent !important; //fix the md-button selector
+		}
+
+		&:active {
+			box-shadow: $whiteframe-shadow-1dp;
+		}
+
+		&:hover &--bars::before,
+		&:focus &--bars::before {
+			top: 9px;
+		}
+
+		&:hover &--bars::after,
+		&:focus &--bars::after {
+			top: -9px;
+		}
 	}
 
-	.rd-menu-button-container {
-		width: $navbar-menu-button-container;
+	&__brand {
+		display: block;
+		position: relative;
+
+		//
+		// make the shadow with before & after
+		&::before {
+			display: block;
+			position: absolute;
+			content: '';
+			opacity: 1;
+			height: 70px;
+			width: 70px;
+			border-radius: 50%;
+			top: 0;
+			left: 10px;
+			box-shadow: $whiteframe-shadow-4dp;
+			z-index: $navbar-z-index + 1;
+			@include opacity-transition();
+		}
+
+		&::after {
+			display: block;
+			position: absolute;
+			content: '';
+			opacity: 1;
+			height: 64px;
+			width: 70px;
+			top: -4;
+			left: 10px;
+			background-color: $navbar-background-color;
+			z-index: $navbar-z-index + 2;
+			@include opacity-transition();
+		}
 	}
 
-	.rd-menu-button {
+	&__logo {
+		height: 70px;
+		width: auto;
+		margin-bottom: -30px;
+		transition: $transition-default;
+		position: relative;
+		z-index: $navbar-z-index + 3;
+		@include opacity-transition();
+	}
+
+	&__logo--scrolled {
+		height: 40px;
+		width: auto;
+		transition: $transition-default;
+		@include opacity-transition();
+	}
+
+	// hide the menu when is not scrolled
+	&:not(&--scrolled) &__menu-button {
+		opacity: 0;
 		visibility: hidden;
-		padding: 0px;
-		margin: 0px;
-		margin-left: -5px;
-    @include opacity-transition();
 	}
 
-	.rd-brand-logo {
-	  width: $navbar-brand-logo-width;
-	  margin-top: $navbar-brand-logo-margin-top;
-    @include opacity-transition();
-	}
-
-	.rd-brand-logo-scrolled {
+	// hide the logo initial state
+	&:not(&--scrolled) &__logo--scrolled {
+		opacity: 0;
 		display: none;
-	  width: $navbar-brand-logo-width-scrolled;
-	  margin-top: $navbar-brand-logo-margin-top-scrolled;
-    @include opacity-transition();
+	}
+	
+	// when is scrolled resize the content
+	&#{&}--scrolled &__content {
+		height: $navbar-height-scrolled;
+		line-height: $navbar-height-scrolled;
 	}
 
-	// navbar dropdown
-	.rd-navbar-dropdown {
-		position: fixed;
-		background-color: $navbar-background-color;
-		width: $navbar-dropdown-width;
-		z-index: $navbar-dropdown-z-index;
-		left: ($gutter-fluid - 5);
-		padding: $gutter-fluid 0px;
-		@include opacity-transition(150ms);
+	// when is scrolled hide the logo
+	&#{&}--scrolled &__logo {
+		opacity: 0;
+		display: none;
 	}
+
+	// when is scrolled remove the shadow on logo
+	&#{&}--scrolled &__brand::before,
+	&#{&}--scrolled &__brand::after {
+		opacity: 0;
+		display: none;
+	}
+
+	&__nav--navigation {
+		flex: 1 0 auto;
+		opacity: 1;
+		@include opacity-transition-delay($delay: 150ms);
+	}
+
+	&__tools {
+	}
+
+	// styling the rd-navbar-navigation
+	&__nav--navigation > rd-navbar-navigation  {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&#{&}--scrolled &__nav--navigation {
+		opacity: 0;
+		display: none;
+	}
+
+	// styling the rd-navbar-tools
+	&__tools > rd-navbar-tools  {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/*************************
+	 * NAVBAR ITEMS
+	 */
+
 }

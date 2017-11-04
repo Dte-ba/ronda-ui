@@ -1,24 +1,25 @@
-/**
+/***********************************************
  * PATHS
  */
 
 // the ronda fonts path for icons
 $ronda-font-path: '../fonts';
 
-/**
+/***********************************************
  * CORE
  */
-$screen-min-width: 420px;
+$screen-min-width: 350px;
 $footer-height: 60px;
 $sitemap-height: 80px;
 
-/**
+/***********************************************
  * LAYOUT
  */
-$gutter: 80;
-$gutter-fluid: 24;
+$gutter: 8rem;
+$gutter-fluid: 2.4rem;
 $container-gutter: ($gutter*2);
 $container-gutter-fluid: ($gutter-fluid*2);
+$container-max-width: 114rem;
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -28,7 +29,7 @@ $grid-breakpoints: (
 ) !default;
 $breakpoints: ( "xs", "sm", "md", "lg", "xl" );
 
-/**
+/***********************************************
  * COLORS
  */
 $ba-color:           #80a424;
@@ -55,7 +56,7 @@ $color-cyan-400:        #26c6da;
 $color-light-green-400: #9ccc65;
 $color-yellow-400:      #f9a825;
 
-/**
+/***********************************************
  * SECTIONS
  */
 // section colors
@@ -73,22 +74,18 @@ $sections: (
 	mediateca: ( color: $color-mediateca )
 ) !default;
 
-/**
+/*
  * Navbar
  */
 $navbar-height: 80px;
-$navbar-scrolled-height: 60px;
+$navbar-height-scrolled: 60px;
 $navbar-background-color: white;
 $navbar-z-index: 10000;
 $navbar-menu-button-container: $gutter - $gutter-fluid;
-$navbar-brand-logo-width: 154px;
-$navbar-brand-logo-width-scrolled: 126px;
-$navbar-brand-logo-margin-top: 17px;
-$navbar-brand-logo-margin-top-scrolled: 5px;
 $navbar-dropdown-width: 230px;
 $navbar-dropdown-z-index: -1;
 
-/**
+/***********************************************
  * FONTS
  */
 
@@ -108,19 +105,74 @@ $dosis-semi-bold:   600;
 $dosis-bold:        700;
 $dosis-extra-bold:  800;
 
-/**
- * FONTS SIZES
+// FONTS SIZES
+$font-size-root: 62.5%; // 10px for defaults browsers
+$font-size-body: 1.6rem;
+
+$font-size-h1: 4.2rem;
+$font-size-h2: 3.2rem;
+$font-size-h3: 2.8rem;
+$font-size-h4: 2.4rem;
+$font-size-h5: 2.0rem;
+$font-size-h6: 1.6rem;
+
+$font-size-headpost-title:    5.4rem;
+$font-size-headpost-subtitle: 3.8rem;
+$font-size-headpost-p:        2.2rem;
+
+/***********************************************
+ * TRNASITIONS
  */
+ $transition-default: all .2s ease-in-out;
+ $transition-default-delay: all 2s ease-in-out 2s;
 
-$font-size-body: 16px;
-
-$font-size-h1: 42px;
-$font-size-h2: 32px;
-$font-size-h3: 28px;
-$font-size-h4: 24px;
-$font-size-h5: 20px;
-$font-size-h6: 16px;
-
-$font-size-headpost-title:    54px;
-$font-size-headpost-subtitle: 38px;
-$font-size-headpost-p:        22px;
+/***********************************************
+ * MATERIAL STUFF
+ */
+ $shadow-key-umbra-opacity:      0.2 !default;
+ $shadow-key-penumbra-opacity:   0.14 !default;
+ $shadow-ambient-shadow-opacity: 0.12 !default;
+ 
+ // NOTE(shyndman): gulp-sass seems to be failing if I split the shadow defs across
+ //    multiple lines. Ugly. Sorry.
+ $whiteframe-shadow-1dp: 0px 1px 3px 0px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 1px 1px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 2px 1px -1px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-2dp: 0px 1px 5px 0px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 2px 2px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 1px -2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-3dp: 0px 1px 8px 0px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 3px 4px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 3px -2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-4dp: 0px 2px 4px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 4px 5px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 10px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-5dp: 0px 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 5px 8px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 14px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-6dp: 0px 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 6px 10px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 18px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-7dp: 0px 4px 5px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 7px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 2px 16px 1px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-8dp: 0px 5px 5px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 8px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 14px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-9dp: 0px 5px 6px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 9px 12px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 16px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-10dp: 0px 6px 6px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 10px 14px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 4px 18px 3px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-11dp: 0px 6px 7px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 11px 15px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 4px 20px 3px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-12dp: 0px 7px 8px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 12px 17px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 22px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-13dp: 0px 7px 8px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 13px 19px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 24px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-14dp: 0px 7px 9px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 14px 21px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 26px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-15dp: 0px 8px 9px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 15px 22px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 6px 28px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-16dp: 0px 8px 10px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 16px 24px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 6px 30px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-17dp: 0px 8px 11px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 17px 26px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 6px 32px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-18dp: 0px 9px 11px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 18px 28px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 7px 34px 6px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-19dp: 0px 9px 12px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 19px 29px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 7px 36px 6px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-20dp: 0px 10px 13px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 20px 31px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 8px 38px 7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-21dp: 0px 10px 13px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 21px 33px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 8px 40px 7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-22dp: 0px 10px 14px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 22px 35px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 8px 42px 7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-23dp: 0px 11px 14px -7px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 23px 36px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 9px 44px 8px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ $whiteframe-shadow-24dp: 0px 11px 15px -7px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 24px 38px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 9px 46px 8px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+ 
+ // Z-indexes
+ //--------------------------------------------
+ 
+ $z-index-toast: 105 !default;
+ $z-index-tooltip: 100 !default;
+ $z-index-menu: 100 !default;
+ $z-index-calendar-pane: 100 !default;
+ $z-index-select: 90 !default;
+ $z-index-dialog: 80 !default;
+ $z-index-bottom-sheet: 70 !default;
+ $z-index-scroll-mask: 50 !default;
+ $z-index-scroll-mask-bar: 65 !default;
+ $z-index-sidenav: 60 !default;
+ $z-index-backdrop: 50 !default;
+ $z-index-fab: 20 !default;
+ $z-index-progress-circular: 2 !default; // Used to fix animation bug in Chrome 

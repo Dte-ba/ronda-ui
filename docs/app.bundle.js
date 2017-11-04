@@ -136,7 +136,7 @@ angular.element(document).ready(function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 routeConfig.$inject = ['$urlRouterProvider', '$locationProvider'];
 exports.routeConfig = routeConfig;
@@ -149,33 +149,17 @@ var _jquery2 = _interopRequireDefault(_jquery);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function routeConfig($urlRouterProvider, $locationProvider) {
-	'ngInject';
+  'ngInject';
 
-	$urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/');
 
-	$locationProvider.html5Mode({
-		enabled: true
-	});
+  $locationProvider.html5Mode({
+    enabled: false
+  });
 }
 
 function runApp() {
-	'ngInject';
-
-	(0, _jquery2.default)(document).ready(function () {
-		var scrollTop = 0;
-		(0, _jquery2.default)(window).scroll(function () {
-			scrollTop = (0, _jquery2.default)(window).scrollTop();
-			(0, _jquery2.default)('.counter').html(scrollTop);
-
-			if (scrollTop >= 100) {
-				(0, _jquery2.default)('#main-nav').addClass('scrolled-nav');
-				(0, _jquery2.default)('.ronda-section-toolbar').addClass('scrolled-toolbar');
-			} else if (scrollTop < 100) {
-				(0, _jquery2.default)('#main-nav').removeClass('scrolled-nav');
-				(0, _jquery2.default)('.ronda-section-toolbar').removeClass('scrolled-toolbar');
-			}
-		});
-	});
+  'ngInject';
 }
 
 /***/ }),
@@ -349,23 +333,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ExperimentsController = exports.ExperimentsController = function () {
-  ExperimentsController.$inject = ['$http'];
+  ExperimentsController.$inject = ['$http', '$element'];
 
   /*@ngInject*/
-  function ExperimentsController($http) {
+  function ExperimentsController($http, $element) {
     _classCallCheck(this, ExperimentsController);
 
     this.$http = $http;
-
-    this.selected = 'propuestas';
-
-    this.navbarItems = [{ section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuesta didáctica' }, { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' }, { section: 'herramienta', icon: 'ri ri-herramienta', caption: 'Herramientas' }, { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' }, { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }];
+    $element.addClass('section-content');
   }
 
   _createClass(ExperimentsController, [{
     key: 'itemClicked',
     value: function itemClicked(item) {
-      this.selected = item.section;
+      console.log(item);
     }
   }, {
     key: '$onInit',
@@ -405,7 +386,7 @@ function routes($stateProvider) {
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<rd-navbar logo=\"assets/ronda-logo.svg\" logo-scrolled=\"assets/ronda-logo-header.svg\">\n\t<rd-navbar-items>\n\t\t<rd-navbar-item \n\t\t\tng-repeat=\"item in $ctrl.navbarItems\" \n\t\t\tng-model=\"item\" \n\t\t\tnavbar-item-selected=\"item.section === $ctrl.selected\"\n\t\t\tng-click=\"$ctrl.itemClicked(item)\"/>\n\t</rd-navbar-items>\n\t<rd-navbar-tools>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-lupa\" navbar-item-selected=\"true\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"mi mi-home\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-mochila\"/>\n\t</rd-navbar-tools>\n</rd-navbar>\n\n<rd-container>\n\tsome content here\n</rd-container>\n\n<rd-container container-fluid>\n\tsome content here\n</rd-container>\n\n<rd-container container-fluid=\"gt-md gt-xl\">\n\tsome content here\n</rd-container>\n\n<div style=\"height: 500px\"></div>"
+module.exports = "<!--\n\t<rd-container container-fluid=\"xs sm md\">\n\t<rd-waterfall columns=\"3\" columns-xs=\"1\" columns-sm=\"2\" columns-md=\"3\">\n\t\t<rd-item-template ng-click=\"$ctrl.itemClicked(item)\">\n\t\t\t<div ng-style=\"{'background-color': item.color}\" >{{item.id}}</div>\n\t\t\t\n\t\t</rd-item-template>\n\t</rd-waterfall>\n</rd-container>\n-->\n\n<div style=\"height: 600px\"></div>"
 
 /***/ }),
 /* 12 */
@@ -439,7 +420,7 @@ var NavbarComponent = exports.NavbarComponent = function () {
 
     this.selected = 'actividades';
 
-    this.navbarItems = [{ section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuesta didáctica' }, { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' }, { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' }, { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' }, { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }];
+    this.navbarItems = [{ section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas' }, { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' }, { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' }, { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' }, { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }];
   }
 
   _createClass(NavbarComponent, [{
@@ -468,7 +449,7 @@ exports.default = angular.module('rondaDocs.navbar', []).component('navbar', {
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "<rd-navbar logo=\"assets/ronda-logo.svg\" logo-scrolled=\"assets/ronda-logo-header.svg\">\n\t<rd-navbar-items>\n\t\t<rd-navbar-item \n\t\t\tng-repeat=\"item in $ctrl.navbarItems\" \n\t\t\tng-model=\"item\" \n\t\t\tnavbar-item-selected=\"item.section === $ctrl.selected\"\n\t\t\tng-click=\"$ctrl.itemClicked(item)\"/>\n\t</rd-navbar-items>\n\t<rd-navbar-tools>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-lupa\" navbar-item-selected=\"true\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"mi mi-home\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-mochila\"/>\n\t</rd-navbar-tools>\n</rd-navbar>"
+module.exports = "<rd-navbar logo=\"assets/ronda-logo.svg\" logo-scrolled=\"assets/ronda-logo-header.svg\">\n\t<rd-navbar-navigation>\n\t\t<rd-navbar-item \n\t\t\tng-repeat=\"item in $ctrl.navbarItems\" \n\t\t\tng-model=\"item\" \n\t\t\tnavbar-item-selected=\"item.section === $ctrl.selected\"\n\t\t\tng-click=\"$ctrl.itemClicked(item)\"\n\t\t\ttabindex=\"0\"/>\n\t</rd-navbar-navigation>\n\t<rd-navbar-tools>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-lupa\" navbar-item-selected=\"true\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"mi mi-home\"/>\n\t\t<rd-navbar-item navbar-item-icon=\"ri ri-mochila\"/>\n\t</rd-navbar-tools>\n\t<rd-navbar-body>\n\t</rd-navbar-body>\n</rd-navbar>"
 
 /***/ }),
 /* 14 */

@@ -14,19 +14,24 @@ class RdNavbarItemController {
     let m = this.$scope.ngModel;
 		if (m && typeof m === 'object') {
 			//replace the scope;
-			this.$scope.icon = m.icon;
-			this.$scope.caption = m.caption;
-			this.$scope.section = m.section;
+			this.icon = m.icon;
+			this.caption = m.caption;
+			this.section = m.section;
+		} else {
+			this.icon = this.$scope.icon;
+			this.caption = this.$scope.caption;
 		}
 
-    this.$element.addClass('rd-navbar-item');
-    this.$element.attr('data-rd-section', this.$scope.section);
+    this.$element.addClass('rd-navbar__item');
+		this.$element.attr('data-rd-section', this.section);
+		
+		this.$element.attr('role', 'menuitem');
 
     this.$scope.$watch(() => { return this.$scope.selected }, (value) => {
     	if (value) {
-    		this.$element.addClass('selected');
+    		this.$element.addClass('rd-navbar__item--selected');
     	} else {
-    		this.$element.removeClass('selected')
+    		this.$element.removeClass('rd-navbar__item--selected')
     	}
     });
 	}
@@ -38,6 +43,7 @@ function RdContainer(){
 	return {
 		restrict: 'E',
 		controller: RdNavbarItemController,
+		controllerAs: '$rdNavbarItemCtrl',
 		scope: {
 			icon: '@navbarItemIcon',
 			caption: '@navbarItemCaption',

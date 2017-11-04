@@ -1,6 +1,10 @@
 $sitemap-height: 80px; 
 $sitemap-bg-color: #303030;
 
+sitemap {
+	display: block;
+}
+
 .sitemap {
 	background-color: $sitemap-bg-color;
 	.sitemap-content {

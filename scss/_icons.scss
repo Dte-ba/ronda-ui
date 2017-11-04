@@ -1,3 +1,14 @@
+@font-face {
+	font-family: 'ronda';
+	src: url('#{$ronda-font-path}/ronda.eot');
+	src: url('#{$ronda-font-path}/ronda.eot?#iefix') format('embedded-opentype'),
+		url('#{$ronda-font-path}/ronda.woff') format('woff'),
+		url('#{$ronda-font-path}/ronda.ttf') format('truetype'),
+		url('#{$ronda-font-path}/ronda.svg#ronda') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 .ri {
   font-family: 'ronda';
   font-weight: normal;

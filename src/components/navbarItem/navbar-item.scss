@@ -1,104 +1,76 @@
-// top navbar
-.rd-navbar-items-horizontal {
-	.rd-navbar-item {
-	  display: inline-block;
-	  vertical-align: bottom;
-	  height: 75px;
-	  padding: 2.5px;
-	  text-align: center;
-		cursor: pointer;
-		color: $grey-color;
-
-		.rd-navbar-item-icon {
-			font-size: 3em;
-			vertical-align: middle;
-		}
-
-	  .rd-navbar-item-caption {
-	  	display: block;
-	  	line-height: normal;
-	  }
-	}
-}
-
-// dropdown
-.rd-navbar-items-dropdown {
-	.rd-navbar-item {
+.rd-navbar {
+	&__item {
 		display: block;
 		cursor: pointer;
 		color: $grey-color;
-		height: 35px;
-		line-height: 35px;
-		border-bottom: 1px solid $light-color;
-		padding: 0px ($gutter-fluid/2);
+		transition: $transition-default;
+	}
 
-		.rd-navbar-item-icon {
-			font-size: 2em;
-			vertical-align: top;
+	//
+	// navigation
+	&__nav--navigation &__item {
+		text-align: center;
+		backface-visibility: hidden;
+
+		&:not(.rd-navbar__item--selected):hover {
+			transform: translateY(-1px);
 		}
 
-		.rd-navbar-item-caption {
-			padding-left: $gutter-fluid;
-			vertical-align: middle;
+		&:active, &:focus {
+			transform: translateY(0px);
 		}
 	}
 
-	.rd-navbar-item:last-child {
-		border-width: 0px;
+	&__nav--navigation &__item:not(:last-child) {
+		margin-right: 2.5rem;
 	}
+
+	&__nav--navigation &__item--icon {
+		font-size: 4.5rem;
+		vertical-align: middle;
+	}
+
+	&__nav--navigation &__item--caption {
+		display: block;
+		line-height: normal;
+	}
+	
+	//
+	// dropdown
+	&__nav--dropdown {
+		
+	}
+
+	//
+	// tools
+
+	&__tools &__item {
+		padding: 0.2rem;
+		background-color: orangered;
+		@include ronda-shape;	
+	}
+	
 }
 
-// both
-.rd-navbar-items-horizontal,
-.rd-navbar-items-dropdown {
-	.rd-navbar-item {
-		&:hover, &.selected {
-			.rd-navbar-item-caption {
+//
+// section colors
+.rd-navbar__nav--navigation,
+.rd-navbar__nav--dropdown {
+	.rd-navbar__item {
+		&:active, &:hover, &:focus, &.rd-navbar__item--selected {
+			.rd-navbar__item--caption {
 				color: $light-color-primary;
 			}
 		}
 	}
 
 	@each $key, $section in $sections {
-		.rd-navbar-item[data-rd-section="#{$key}"],
-		.rd-navbar-item[rd-section="#{$key}"] {
-			&:hover, &.selected {
-				.rd-navbar-item-icon {
+		.rd-navbar__item[data-rd-section="#{$key}"],
+		.rd-navbar__item[rd-section="#{$key}"] {
+			&:active, &.rd-navbar__item--selected {
+				.rd-navbar__item--icon {
 					color: map-get($section, color);
 				}
-			}
-		}
-	}
-}
-
-.rd-navbar-items-tools {
-	.rd-navbar-item {
-		display: inline-block;
-		cursor: pointer;
-		color: $grey-color;
-	  text-align: center;
-
-		.rd-navbar-item-caption {
-			display: none;
-		}
-
-		.rd-navbar-item-icon {
-			font-size: 2em;
-			vertical-align: middle;
-
-			@include ronda-icon-rounded($light-color);
-		}
-
-		&:hover {
-			.rd-navbar-item-icon {
-				color: $light-color-primary;
-			}
-		}
-
-		&.selected {
-			.rd-navbar-item-icon {
-				color: white;
-				@include ronda-icon-rounded($color-red-600);
 			}
 		}
 	}

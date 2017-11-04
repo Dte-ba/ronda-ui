@@ -1,19 +1,22 @@
-<rd-container container-fluid class="rd-navbar-content" layout="row" ng-class="{ 'rd-navbar-mobile': isMobile }" data-sm="{{isMobile}}" md-whiteframe="4">
-	<div class="rd-menu-button-container" layout="row" layout-align="start center">
-		<md-button class="rd-menu-button md-icon-button grey-color" aria-label="Menu" ng-click="toggleDropdown($event)">
-      <md-icon>menu</md-icon>
-    </md-button>
-	</div>
-	<div class="rd-navbar-brand">
-		<div class="rd-brand-logo">
-			<img ng-src="{{logo}}" alt="Logo">
-		</div>
-		<div class="rd-brand-logo-scrolled">
-			<img ng-src="{{logoScrolled}}" alt="Logo">
-		</div>
-	</div>
-	<div flex class="rd-navbar-body" ng-transclude="body" ng-hide="isMobile"></div>
-	<div flex class="rd-navbar-items rd-navbar-items-horizontal" ng-transclude="items" layout="row" layout-align="center center"></div>
-	<div flex-sm flex-xs class="rd-navbar-items-tools" ng-transclude="tools" layout="row" layout-align="end center"></div>
-</rd-container>
-<div flex class="rd-navbar-dropdown rd-navbar-items-dropdown" ng-transclude="items" md-whiteframe="2" ng-show="dropdownOpened"></div>
+<div class="rd-navbar__content"
+		 layout="row"
+		 ng-class="{ 'rd-navbar--mobile': $rdNavbarController.isMobile }">
+	
+	<!-- MENU BUTTON -->
+	<md-button class="rd-navbar__menu-button" aria-label="Menu" ng-click="$rdNavbarController.toggleDropdown($event)">
+		<span class="rd-navbar__menu-button--bars"></span>
+	</md-button>
+
+	<!-- BRAND-->
+	<a href="#" class="rd-navbar__brand" aria-label="Ir al home">
+		<img class="rd-navbar__logo" ng-src="{{$rdNavbarController.logo}}" alt="Logo">
+		<img class="rd-navbar__logo--scrolled" ng-src="{{$rdNavbarController.logoScrolled}}" alt="Logo">
+	</a>
+	
+	<!-- HORIZONTAL NAVIGATION -->
+	<nav class="rd-navbar__nav--navigation" ng-transclude="items" role="navigation">
+	</nav>
+
+	<!-- TOOLS -->
+	<div class="rd-navbar__tools" ng-transclude="tools"></div>
+</div>

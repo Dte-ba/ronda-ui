@@ -11,7 +11,7 @@ export class NavbarComponent {
     this.selected = 'actividades';
 
     this.navbarItems = [
-      { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuesta didáctica' },
+      { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas' },
       { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
       { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
       { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
